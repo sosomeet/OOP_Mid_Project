@@ -1,6 +1,6 @@
 package oop_project;
 
-public class Menu extends Kitchen {
+public class Menu extends Restaurant {
 
 	private String name;
 	private int price;
@@ -18,7 +18,7 @@ public class Menu extends Kitchen {
 			useItemList[i] = (int) (Math.random() * 3);
 			this.price += useItemList[i] * super.GetItemPrice()[i];
 		}
-		this.price *= 1.2f;
+		this.price *= 3.5f;
 	}
 
 	public void PrintItem(String[] itemNameList) {

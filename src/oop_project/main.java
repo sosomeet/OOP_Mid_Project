@@ -3,25 +3,43 @@ package oop_project;
 public class main {
 
 	public static void main(String[] args) {
-		Kitchen kitchen = new Kitchen();
+		Restaurant restaurant = new Restaurant();
 
-		kitchen.PrintKitchen();
+		restaurant.PrintRestaurant();
 		
-		kitchen.AddMenu("타코");
-		kitchen.AddMenu("볼타코");
-		kitchen.AddMenu("샐러드타코");
+		restaurant.AddMenu("타코");
+		restaurant.AddMenu("브리또");
+		restaurant.AddMenu("보울 타코");
+		restaurant.AddMenu("크리스피 타코");
+		restaurant.AddMenu("또띠아");
+		restaurant.PrintMenuList();
+		// restaurant.PrintMenuListDetail();
 		
-		kitchen.PrintMenuList();
-		kitchen.PrintMenuListDetail();
+		restaurant.AddChef("요리사1", 0);
+		restaurant.AddChef("요리사2", 1);
+		restaurant.AddChef("요리사3", 2);
+		restaurant.AddChef("요리사4", 3);
+		restaurant.AddChef("요리사5");
+		restaurant.PrintChefList();
+		// restaurant.PrintChefListDetail();
 		
-		kitchen.AddChef("이치우1", 0);
-		kitchen.AddChef("이치우2", 1);
-		kitchen.AddChef("이치우3", 2);
-		kitchen.AddChef("이치우4", 3);
-		kitchen.AddChef("이치우5");
-		kitchen.AddChef("이치우6");
-		kitchen.PrintChefList();
+		restaurant.AddGuest(10);
+		restaurant.AddGuest("착한놈");
+		restaurant.AddGuest("나쁜놈", 1);
+		restaurant.PrintGuestList();
+		// restaurant.PrintGuestListDetail();
 		
+		restaurant.LeaveGuest(4);
+		restaurant.PrintGuestList();
+		restaurant.PrintIncome();
+		
+		restaurant.LeaveGuest(4);
+		restaurant.PrintGuestList();
+		restaurant.PrintIncome();
+		
+		restaurant.LeaveGuest(4);
+		restaurant.PrintGuestList();
+		restaurant.PrintIncome();
 	}
 
 }
