@@ -1,6 +1,6 @@
 package oop_project;
 
-public class Chef extends Kitchen {
+public class Chef extends Restaurant {
 
 	private String name;
 	private String rank;
