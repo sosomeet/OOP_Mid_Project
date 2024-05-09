@@ -18,7 +18,7 @@ public class Menu extends Restaurant {
 			useItemList[i] = (int) (Math.random() * 3);
 			this.price += useItemList[i] * super.GetItemPrice()[i];
 		}
-		this.price *= 3.5f;
+		this.price = (int)(this.price * 3.5f / 100)*100;
 	}
 
 	public void PrintItem(String[] itemNameList) {
@@ -41,5 +41,15 @@ public class Menu extends Restaurant {
 
 	public int GetPrice() {
 		return this.price;
+	}
+
+	public void PrintMenuList(Menu menu, String[] itemNameList) {
+		menu.PrintItem(itemNameList);
+		return;
+	}
+
+	public void PrintMenuListDetail(Menu menu, String[] itemNameList) {
+		menu.PrintItemDetail(itemNameList);
+		return;
 	}
 }
