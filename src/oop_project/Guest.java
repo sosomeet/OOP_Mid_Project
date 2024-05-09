@@ -7,85 +7,81 @@ public class Guest extends Restaurant {
 	private int selectMenuCount;
 
 	Guest() {
-
+		this.name = "";
+		this.category = 0;
+		this.selectMenuCount = 0;
+		this.selectMenuCount = 0;
 	}
 
 	Guest(int menuLen, int index) {
-		boolean isCreated = false;
-		
-		while (!isCreated) {
-			this.category = (int) (Math.random() * 3);
-			if (category == 0) {
-				this.name = "평범한 손님" + index;
-				this.selectMenuIndex = (int) (Math.random() * menuLen);
-				this.selectMenuCount = (int) (Math.random() * 2) + 1;
-				isCreated = true;
-			}
-
-			else if (category == 1) {
-				this.name = "대식가 손님" + index;
-				this.selectMenuIndex = (int) (Math.random() * menuLen);
-				this.selectMenuCount = (int) (Math.random() * 4) + 2;
-				isCreated = true;
-			}
-
-			else if (category == 2) {
-				this.category = (int) (Math.random() * 3);
-				if (category == 2) {
-					this.name = "신메뉴 손님" + index;
-					this.selectMenuIndex = (int) (Math.random() * menuLen);
-					this.selectMenuCount = 1;
-					isCreated = true;
-				} else {
-					isCreated = false;
-				}
-			}
-		}
+		this.category = (int) (Math.random() * 3);
+		AddGuest("", menuLen, category);
 
 	}
 
 	Guest(String name, int menuLen) {
-		int category = (int) (Math.random() * 3);
-
-		if (category == 0) {
-			this.name = "평범한 " + name;
-			this.selectMenuIndex = (int) (Math.random() * menuLen);
-			this.selectMenuCount = (int) (Math.random() * 2) + 1;
-		}
-
-		else if (category == 1) {
-			this.name = "대식가 " + name;
-			this.selectMenuIndex = (int) (Math.random() * menuLen);
-			this.selectMenuCount = (int) (Math.random() * 4) + 2;
-		}
-
-		else if (category == 2) {
-			this.name = "신메뉴 요구 " + name;
-			this.selectMenuIndex = (int) (Math.random() * menuLen);
-			this.selectMenuCount = 1;
-		}
+		AddGuest(name, menuLen, category);
 
 	}
 
 	Guest(String name, int menuLen, int category) {
-		this.name = name;
+		AddGuest(name, menuLen, category);
+	}
 
-		if (category == 0) {
-			this.name = "평범한 " + name;
-			this.selectMenuIndex = (int) (Math.random() * menuLen);
-			this.selectMenuCount = (int) (Math.random() * 2) + 1;
-		}
+	public void AddGuest(String name, int menuLen, int category) {
+		boolean isCreated = false;
 
-		else if (category == 1) {
-			this.name = "대식가 " + name;
-			this.selectMenuIndex = (int) (Math.random() * menuLen);
-			this.selectMenuCount = (int) (Math.random() * 4) + 2;
-		}
+		while (!isCreated) {
 
-		else if (category == 2) {
-			this.name = "신메뉴 요구 " + name;
-			this.selectMenuIndex = (int) (Math.random() * menuLen);
-			this.selectMenuCount = 1;
+			if (name.equals("")) {
+				if (category == 0) {
+					this.name = "평범한 손님";
+					this.selectMenuIndex = (int) (Math.random() * menuLen);
+					this.selectMenuCount = (int) (Math.random() * 2) + 1;
+					isCreated = true;
+				}
+
+				else if (category == 1) {
+					this.name = "대식가 손님";
+					this.selectMenuIndex = (int) (Math.random() * menuLen);
+					this.selectMenuCount = (int) (Math.random() * 4) + 2;
+					isCreated = true;
+				}
+
+				else if (category == 2) {
+					this.category = (int) (Math.random() * 3);
+					if (category == 2) {
+						this.name = "신메뉴 손님";
+						this.selectMenuIndex = (int) (Math.random() * menuLen);
+						this.selectMenuCount = 1;
+						isCreated = true;
+					} else {
+						isCreated = false;
+					}
+				}
+			} else {
+				if (category == 0) {
+					this.name = name;
+					this.selectMenuIndex = (int) (Math.random() * menuLen);
+					this.selectMenuCount = (int) (Math.random() * 2) + 1;
+					isCreated = true;
+				}
+
+				else if (category == 1) {
+					this.name = name;
+					this.selectMenuIndex = (int) (Math.random() * menuLen);
+					this.selectMenuCount = (int) (Math.random() * 4) + 2;
+					isCreated = true;
+				}
+
+				else if (category == 2) {
+					this.category = (int) (Math.random() * 3);
+					this.name = name;
+					this.selectMenuIndex = (int) (Math.random() * menuLen);
+					this.selectMenuCount = 1;
+					isCreated = true;
+				}
+			}
 		}
 
 	}
@@ -108,6 +104,35 @@ public class Guest extends Restaurant {
 
 	public int GetSelectCount() {
 		return this.selectMenuCount;
+	}
+
+	public void PrintGuestListSimple(Guest[] guestList, int guestLen, Menu[] menuList) {
+		System.out.println("손님 " + guestLen + "명");
+		for (int i = 0; i < guestLen; i++) {
+			System.out.println(guestList[i].GetSelectMenuName(menuList) + " " + guestList[i].GetSelectCount() + "개");
+		}
+		System.out.println();
+		return;
+	}
+
+	public void PrintGuestList(Guest[] guestList, int guestLen, Menu[] menuList) {
+		System.out.println("손님 " + guestLen + "명");
+		for (int i = 0; i < guestLen; i++) {
+			System.out.println(guestList[i].GetName() + " : " + guestList[i].GetSelectMenuName(menuList) + " "
+					+ guestList[i].GetSelectCount() + "개");
+		}
+		System.out.println();
+		return;
+	}
+
+	public void PrintGuestListDetail(Guest[] guestList, int guestLen, Menu[] menuList) {
+		System.out.println("손님 " + guestLen + "명");
+		for (int i = 0; i < guestLen; i++) {
+			System.out.print(guestList[i].GetName() + " 유형 : " + guestList[i].GetCategory() + " \t");
+			System.out.println(guestList[i].GetSelectMenuName(menuList) + guestList[i].GetSelectCount() + "개");
+		}
+		System.out.println();
+		return;
 	}
 
 }
