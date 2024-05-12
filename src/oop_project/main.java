@@ -2,106 +2,106 @@ package oop_project;
 
 public class Main {
 
-	// ¸Ş´º Ãß°¡ÇÏ´Â ÇÔ¼ö
+	// ë©”ë‰´ ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜
 	public static Menu[] AddMenu(String name, Menu[] menuList) {
-		Menu[] newMenuList = new Menu[menuList.length + 1]; // ±âÁ¸º¸´Ù Å©±â°¡ 1Å« ¸®½ºÆ®
+		Menu[] newMenuList = new Menu[menuList.length + 1]; // ê¸°ì¡´ë³´ë‹¤ í¬ê¸°ê°€ 1í° ë¦¬ìŠ¤íŠ¸
 		int i;
-		for (i = 0; i < menuList.length; i++) { // ±âÁ¸ ¸Ş´º Ãß°¡
+		for (i = 0; i < menuList.length; i++) { // ê¸°ì¡´ ë©”ë‰´ ì¶”ê°€
 			newMenuList[i] = menuList[i];
 		}
-		newMenuList[i] = new Menu(name); // ½Å±Ô ¸Ş´º Ãß°¡
-		menuList = newMenuList; // ¸Ş´º¸®½ºÆ® °»½Å
+		newMenuList[i] = new Menu(name); // ì‹ ê·œ ë©”ë‰´ ì¶”ê°€
+		menuList = newMenuList; // ë©”ë‰´ë¦¬ìŠ¤íŠ¸ ê°±ì‹ 
 
 		return menuList;
 	}
 
-	// ¼ÎÇÁ¸¦ ÀÌ¸§À» ÀÔ·Â¹Ş°í Ãß°¡ÇÏ´Â ÇÔ¼ö ¿À¹ö·Îµù
+	// ì…°í”„ë¥¼ ì´ë¦„ì„ ì…ë ¥ë°›ê³  ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜ ì˜¤ë²„ë¡œë”©
 	public static Chef[] AddChef(String name, Chef[] chefList, int menuLen) {
-		Chef[] newchefList = new Chef[chefList.length + 1]; // ±âÁ¸º¸´Ù Å©±â°¡ 1Å« ¸®½ºÆ®
+		Chef[] newchefList = new Chef[chefList.length + 1]; // ê¸°ì¡´ë³´ë‹¤ í¬ê¸°ê°€ 1í° ë¦¬ìŠ¤íŠ¸
 		int i;
-		for (i = 0; i < chefList.length; i++) { // ±âÁ¸ ¼ÎÇÁ Ãß°¡
+		for (i = 0; i < chefList.length; i++) { // ê¸°ì¡´ ì…°í”„ ì¶”ê°€
 			newchefList[i] = chefList[i];
 		}
-		newchefList[i] = new Chef(name, menuLen); // ½Å±Ô ¼ÎÇÁ Ãß°¡
-		chefList = newchefList; // ¼ÎÇÁ¸®½ºÆ® °»½Å
+		newchefList[i] = new Chef(name, menuLen); // ì‹ ê·œ ì…°í”„ ì¶”ê°€
+		chefList = newchefList; // ì…°í”„ë¦¬ìŠ¤íŠ¸ ê°±ì‹ 
 
 		return chefList;
 	}
 
-	// ¼ÎÇÁ¸¦ ÀÌ¸§°ú µî±ŞÀ» ÀÔ·Â¹Ş°í Ãß°¡ÇÏ´Â ÇÔ¼ö ¿À¹ö·Îµù
+	// ì…°í”„ë¥¼ ì´ë¦„ê³¼ ë“±ê¸‰ì„ ì…ë ¥ë°›ê³  ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜ ì˜¤ë²„ë¡œë”©
 	public static Chef[] AddChef(String name, int rank, Chef[] chefList, int menuLen) {
-		Chef[] newChefList = new Chef[chefList.length + 1]; // ±âÁ¸º¸´Ù Å©±â°¡ 1Å« ¸®½ºÆ®
+		Chef[] newChefList = new Chef[chefList.length + 1]; // ê¸°ì¡´ë³´ë‹¤ í¬ê¸°ê°€ 1í° ë¦¬ìŠ¤íŠ¸
 		int i;
-		for (i = 0; i < chefList.length; i++) { // ±âÁ¸ ¼ÎÇÁ Ãß°¡
+		for (i = 0; i < chefList.length; i++) { // ê¸°ì¡´ ì…°í”„ ì¶”ê°€
 			newChefList[i] = chefList[i];
 		}
-		newChefList[i] = new Chef(name, menuLen, rank); // ½Å±Ô ¼ÎÇÁ Ãß°¡
-		chefList = newChefList; // ¼ÎÇÁ¸®½ºÆ® °»½Å
+		newChefList[i] = new Chef(name, menuLen, rank); // ì‹ ê·œ ì…°í”„ ì¶”ê°€
+		chefList = newChefList; // ì…°í”„ë¦¬ìŠ¤íŠ¸ ê°±ì‹ 
 
 		return chefList;
 	}
 
-	// ¼Õ´ÔÀÇ ÀÌ¸§À» ÀÔ·Â¹Ş°í Ãß°¡ÇÏ´Â ÇÔ¼ö ¿À¹ö·Îµù
+	// ì†ë‹˜ì˜ ì´ë¦„ì„ ì…ë ¥ë°›ê³  ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜ ì˜¤ë²„ë¡œë”©
 	public static Guest[] AddGuest(String name, Guest[] guestList, int menuLen) {
-		Guest[] newGuestList = new Guest[guestList.length + 1]; // ±âÁ¸º¸´Ù Å©±â°¡ 1Å« ¸®½ºÆ®
+		Guest[] newGuestList = new Guest[guestList.length + 1]; // ê¸°ì¡´ë³´ë‹¤ í¬ê¸°ê°€ 1í° ë¦¬ìŠ¤íŠ¸
 		int i;
-		for (i = 0; i < guestList.length; i++) { // ±âÁ¸ ¼Õ´Ô Ãß°¡
+		for (i = 0; i < guestList.length; i++) { // ê¸°ì¡´ ì†ë‹˜ ì¶”ê°€
 			newGuestList[i] = guestList[i];
 		}
-		newGuestList[i] = new Guest(name, menuLen); // ½Å±Ô ¼Õ´Ô Ãß°¡
-		guestList = newGuestList; // ¼Õ´Ô ¸®½ºÆ® °»½Å
+		newGuestList[i] = new Guest(name, menuLen); // ì‹ ê·œ ì†ë‹˜ ì¶”ê°€
+		guestList = newGuestList; // ì†ë‹˜ ë¦¬ìŠ¤íŠ¸ ê°±ì‹ 
 
 		return guestList;
 	}
 
-	// ¼Õ´ÔÀÇ ÀÌ¸§°ú À¯ÇüÀ» ÀÔ·Â¹Ş°í Ãß°¡ÇÏ´Â ÇÔ¼ö ¿À¹ö·Îµù
+	// ì†ë‹˜ì˜ ì´ë¦„ê³¼ ìœ í˜•ì„ ì…ë ¥ë°›ê³  ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜ ì˜¤ë²„ë¡œë”©
 	public static Guest[] AddGuest(String name, int category, Guest[] guestList, int menuLen) {
-		Guest[] newGuestList = new Guest[guestList.length + 1]; // ±âÁ¸º¸´Ù Å©±â°¡ 1Å« ¸®½ºÆ®
+		Guest[] newGuestList = new Guest[guestList.length + 1]; // ê¸°ì¡´ë³´ë‹¤ í¬ê¸°ê°€ 1í° ë¦¬ìŠ¤íŠ¸
 		int i;
-		for (i = 0; i < guestList.length; i++) { // ±âÁ¸ ¼Õ´Ô Ãß°¡
+		for (i = 0; i < guestList.length; i++) { // ê¸°ì¡´ ì†ë‹˜ ì¶”ê°€
 			newGuestList[i] = guestList[i];
 		}
-		newGuestList[i] = new Guest(name, menuLen, category); // ½Å±Ô ¼Õ´Ô Ãß°¡
-		guestList = newGuestList; // ¼Õ´Ô ¸®½ºÆ® °»½Å
+		newGuestList[i] = new Guest(name, menuLen, category); // ì‹ ê·œ ì†ë‹˜ ì¶”ê°€
+		guestList = newGuestList; // ì†ë‹˜ ë¦¬ìŠ¤íŠ¸ ê°±ì‹ 
 
 		return guestList;
 	}
 
-	// ¼Õ´ÔÀ» n¸í Ãß°¡ÇÏ´Â ÇÔ¼ö ¿À¹ö·Îµù
+	// ì†ë‹˜ì„ nëª… ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜ ì˜¤ë²„ë¡œë”©
 	public static Guest[] AddGuest(int count, Guest[] guestList, int menuLen) {
-		Guest[] newGuestList = new Guest[guestList.length + count]; // ±âÁ¸º¸´Ù Å©±â°¡ count¸¸Å­ Å« ¸®½ºÆ®
-		for (int i = 0; i < guestList.length; i++) { // ±âÁ¸ ¼Õ´Ô Ãß°¡
+		Guest[] newGuestList = new Guest[guestList.length + count]; // ê¸°ì¡´ë³´ë‹¤ í¬ê¸°ê°€ countë§Œí¼ í° ë¦¬ìŠ¤íŠ¸
+		for (int i = 0; i < guestList.length; i++) { // ê¸°ì¡´ ì†ë‹˜ ì¶”ê°€
 			newGuestList[i] = guestList[i];
 		}
 
-		for (int i = guestList.length; i < guestList.length + count; i++) { // ½Å±Ô ¼Õ´Ô n¸í Ãß°¡
+		for (int i = guestList.length; i < guestList.length + count; i++) { // ì‹ ê·œ ì†ë‹˜ nëª… ì¶”ê°€
 			newGuestList[i] = new Guest(menuLen);
 		}
-		guestList = newGuestList; // ¼Õ´Ô ¸®½ºÆ® °»½Å
+		guestList = newGuestList; // ì†ë‹˜ ë¦¬ìŠ¤íŠ¸ ê°±ì‹ 
 
 		return guestList;
 	}
 
-	// ¼Õ´ÔÀ» n¸í °¨¼ÒÇÏ´Â ÇÔ¼ö ¿À¹ö·Îµù
+	// ì†ë‹˜ì„ nëª… ê°ì†Œí•˜ëŠ” í•¨ìˆ˜ ì˜¤ë²„ë¡œë”©
 	public static Guest[] LeaveGuest(int count, Restaurant restaurant, Guest[] guestList, Menu[] menuList) {
-		Guest[] newGuestList = new Guest[guestList.length - count]; // ±âÁ¸º¸´Ù Å©±â°¡ count¸¸Å­ ÀÛÀº ¸®½ºÆ®
-		for (int i = 0; i < count; i++) { // ¸Ş´º °¡°İ * ¸Ş´º °³¼ö ¸¸Å­ÀÇ ¼öÀÍ Ãß°¡
+		Guest[] newGuestList = new Guest[guestList.length - count]; // ê¸°ì¡´ë³´ë‹¤ í¬ê¸°ê°€ countë§Œí¼ ì‘ì€ ë¦¬ìŠ¤íŠ¸
+		for (int i = 0; i < count; i++) { // ë©”ë‰´ ê°€ê²© * ë©”ë‰´ ê°œìˆ˜ ë§Œí¼ì˜ ìˆ˜ìµ ì¶”ê°€
 			restaurant.AdjustIncome(
 					menuList[guestList[i].GetSelectMenuIndex()].GetPrice() * guestList[i].GetSelectCount());
 		}
 
-		for (int i = count; i < guestList.length; i++) { // countºÎÅÍ ±âÁ¸ ¼Õ´Ô Ãß°¡
+		for (int i = count; i < guestList.length; i++) { // countë¶€í„° ê¸°ì¡´ ì†ë‹˜ ì¶”ê°€
 			newGuestList[i] = guestList[i];
 		}
-		guestList = newGuestList; // ¼Õ´Ô ¸®½ºÆ® °»½Å
+		guestList = newGuestList; // ì†ë‹˜ ë¦¬ìŠ¤íŠ¸ ê°±ì‹ 
 
 		return guestList;
 	}
 
-	// ±âº» ¸Ş´º Ãâ·Â
+	// ê¸°ë³¸ ë©”ë‰´ ì¶œë ¥
 	public static void PrintMenuList(Menu[] menuList, Restaurant restaurant) {
-		System.out.println("¸Ş´º " + menuList.length + "°³");
-		for (int i = 0; i < menuList.length; i++) { // ¸Ş´º ÀÌ¸§ Ãâ·Â
+		System.out.println("ë©”ë‰´ " + menuList.length + "ê°œ");
+		for (int i = 0; i < menuList.length; i++) { // ë©”ë‰´ ì´ë¦„ ì¶œë ¥
 			menuList[i].PrintMenu(restaurant.GetItemNameList());
 		}
 		System.out.println();
@@ -109,10 +109,10 @@ public class Main {
 		return;
 	}
 
-	// ÀÚ¼¼ÇÑ ¸Ş´º Ãâ·Â
+	// ìì„¸í•œ ë©”ë‰´ ì¶œë ¥
 	public static void PrintMenuListDetail(Menu[] menuList, Restaurant restaurant) {
-		System.out.println("¸Ş´º " + menuList.length + "°³");
-		for (int i = 0; i < menuList.length; i++) { // ¸Ş´º ÀÌ¸§°ú µé¾î°¡´Â Àç·á °³¼ö Ãâ·Â
+		System.out.println("ë©”ë‰´ " + menuList.length + "ê°œ");
+		for (int i = 0; i < menuList.length; i++) { // ë©”ë‰´ ì´ë¦„ê³¼ ë“¤ì–´ê°€ëŠ” ì¬ë£Œ ê°œìˆ˜ ì¶œë ¥
 			menuList[i].PrintMenuDetail(restaurant.GetItemNameList());
 		}
 		System.out.println();
@@ -120,10 +120,10 @@ public class Main {
 		return;
 	}
 
-	// ±âº» ¼ÎÇÁ Ãâ·Â
+	// ê¸°ë³¸ ì…°í”„ ì¶œë ¥
 	public static void PrintChefList(Chef[] chefList) {
-		System.out.println("Á÷¿ø " + chefList.length + "¸í");
-		for (int i = 0; i < chefList.length; i++) { // ¼ÎÇÁ ÀÌ¸§°ú À¯Çü Ãâ·Â
+		System.out.println("ì§ì› " + chefList.length + "ëª…");
+		for (int i = 0; i < chefList.length; i++) { // ì…°í”„ ì´ë¦„ê³¼ ìœ í˜• ì¶œë ¥
 			chefList[i].PrintChef(chefList[i], chefList.length);
 		}
 		System.out.println();
@@ -131,10 +131,10 @@ public class Main {
 		return;
 	}
 
-	// ÀÚ¼¼ÇÑ ¼ÎÇÁ Ãâ·Â
+	// ìì„¸í•œ ì…°í”„ ì¶œë ¥
 	public static void PrintChefListDetail(Chef[] chefList, Menu[] menuList) {
-		System.out.println("Á÷¿ø " + chefList.length + "¸í");
-		for (int i = 0; i < chefList.length; i++) { // ¼ÎÇÁ ÀÌ¸§°ú À¯Çü, ¿ä¸® °¡´ÉÇÑ ¸Ş´º Ãâ·Â
+		System.out.println("ì§ì› " + chefList.length + "ëª…");
+		for (int i = 0; i < chefList.length; i++) { // ì…°í”„ ì´ë¦„ê³¼ ìœ í˜•, ìš”ë¦¬ ê°€ëŠ¥í•œ ë©”ë‰´ ì¶œë ¥
 			chefList[i].PrintChefDetail(chefList[i], menuList);
 		}
 		System.out.println();
@@ -142,73 +142,73 @@ public class Main {
 		return;
 	}
 
-	// °£´ÜÇÑ ¼Õ´Ô Ãâ·Â
+	// ê°„ë‹¨í•œ ì†ë‹˜ ì¶œë ¥
 	public static void PrintGuestListSimple(Guest[] guestList, Menu[] menuList) {
-		System.out.println("¼Õ´Ô " + guestList.length + "¸í");
+		System.out.println("ì†ë‹˜ " + guestList.length + "ëª…");
 		for (int i = 0; i < guestList.length; i++) {
-			// ¼Õ´ÔÀÌ °í¸¥ À½½Ä°ú °³¼ö Ãâ·Â
-			System.out.println(guestList[i].GetSelectMenuName(menuList) + " " + guestList[i].GetSelectCount() + "°³");
+			// ì†ë‹˜ì´ ê³ ë¥¸ ìŒì‹ê³¼ ê°œìˆ˜ ì¶œë ¥
+			System.out.println(guestList[i].GetSelectMenuName(menuList) + " " + guestList[i].GetSelectCount() + "ê°œ");
 		}
 		System.out.println();
 		return;
 	}
 
-	// ±âº» ¼Õ´Ô Ãâ·Â
+	// ê¸°ë³¸ ì†ë‹˜ ì¶œë ¥
 	public static void PrintGuestList(Guest[] guestList, Menu[] menuList) {
-		System.out.println("¼Õ´Ô " + guestList.length + "¸í");
+		System.out.println("ì†ë‹˜ " + guestList.length + "ëª…");
 		for (int i = 0; i < guestList.length; i++) {
-			// ¼Õ´ÔÀÇ ÀÌ¸§ : °í¸¥ À½½Ä°ú °³¼ö Ãâ·Â
+			// ì†ë‹˜ì˜ ì´ë¦„ : ê³ ë¥¸ ìŒì‹ê³¼ ê°œìˆ˜ ì¶œë ¥
 			System.out.println(guestList[i].GetName() + " : " + guestList[i].GetSelectMenuName(menuList) + " "
-					+ guestList[i].GetSelectCount() + "°³");
+					+ guestList[i].GetSelectCount() + "ê°œ");
 		}
 		System.out.println();
 		
 		return;
 	}
 	
-	// ÀÚ¼¼ÇÑ ¼Õ´Ô Ãâ·Â
+	// ìì„¸í•œ ì†ë‹˜ ì¶œë ¥
 	public static void PrintGuestListDetail(Guest[] guestList, Menu[] menuList) {
-		System.out.println("¼Õ´Ô " + guestList.length + "¸í");
+		System.out.println("ì†ë‹˜ " + guestList.length + "ëª…");
 		for (int i = 0; i < guestList.length; i++) {
-			// ¼Õ´ÔÀÇ ÀÌ¸§ À¯Çü : n	°í¸¥ À½½Ä°ú °³¼ö Ãâ·Â
-			System.out.print(guestList[i].GetName() + " À¯Çü : " + guestList[i].GetCategory() + " \t");
-			System.out.println(guestList[i].GetSelectMenuName(menuList) + guestList[i].GetSelectCount() + "°³");
+			// ì†ë‹˜ì˜ ì´ë¦„ ìœ í˜• : n	ê³ ë¥¸ ìŒì‹ê³¼ ê°œìˆ˜ ì¶œë ¥
+			System.out.print(guestList[i].GetName() + " ìœ í˜• : " + guestList[i].GetCategory() + " \t");
+			System.out.println(guestList[i].GetSelectMenuName(menuList) + guestList[i].GetSelectCount() + "ê°œ");
 		}
 		System.out.println();
 		
 		return;
 	}
 
-	//¼Õ´ÔÀÌ ÁÖ¹®ÇÑ ¿ä¸® Á¦ÀÛ
+	//ì†ë‹˜ì´ ì£¼ë¬¸í•œ ìš”ë¦¬ ì œì‘
 	public static Guest[] Cook(int cooked, Restaurant restaurant, Menu[] menuList, Chef[] chefList, Guest[] guestList) {
-		for (int k = 0; k <= cooked; k++) { // n¸í ¿ä¸® Á¦ÀÛ
-			for (int i = 0; i < chefList.length; i++) { // ¿ä¸® °¡´ÉÇÑ ¼ÎÇÁ
-				// ¿ä¸® °¡´ÉÇÑ ¼ÎÇÁ È®ÀÎ
+		for (int k = 0; k <= cooked; k++) { // nëª… ìš”ë¦¬ ì œì‘
+			for (int i = 0; i < chefList.length; i++) { // ìš”ë¦¬ ê°€ëŠ¥í•œ ì…°í”„
+				// ìš”ë¦¬ ê°€ëŠ¥í•œ ì…°í”„ í™•ì¸
 				if (chefList[i].Cook(restaurant, menuList, guestList)) {
-					// ¿ä¸® °¡´ÉÇÏ´Ù¸é ¼Õ´ÔÀÌ ¶°³²
+					// ìš”ë¦¬ ê°€ëŠ¥í•˜ë‹¤ë©´ ì†ë‹˜ì´ ë– ë‚¨
 					guestList = LeaveGuest(1, restaurant, guestList, menuList);
 					break;
 				}
 			}
 		}
 
-		return guestList; // ¼Õ´Ô ¸®½ºÆ® ¹İÈ¯
+		return guestList; // ì†ë‹˜ ë¦¬ìŠ¤íŠ¸ ë°˜í™˜
 	}
 
 	public static void main(String[] args) {
-		// ½Ã°£
+		// ì‹œê°„
 		int turn = 0;
 
-		// ·¹½ºÅä¶û
+		// ë ˆìŠ¤í† ë‘
 		Restaurant restaurant = new Restaurant();
 
-		// ¸Ş´º ¸®½ºÆ®
+		// ë©”ë‰´ ë¦¬ìŠ¤íŠ¸
 		Menu[] menuList = new Menu[0];
 
-		// ¼ÎÇÁ ¸®½ºÆ®
+		// ì…°í”„ ë¦¬ìŠ¤íŠ¸
 		Chef[] chefList = new Chef[0];
 
-		// ¼Õ´Ô ¸®½ºÆ®
+		// ì†ë‹˜ ë¦¬ìŠ¤íŠ¸
 		Guest[] guestList = new Guest[0];
 
 	}
