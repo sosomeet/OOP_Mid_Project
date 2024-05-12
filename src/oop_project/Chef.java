@@ -2,44 +2,44 @@ package oop_project;
 
 public class Chef extends Restaurant {
 
-	private String name; // ¼ÎÇÁ ÀÌ¸§
-	private String rank; // ¼ÎÇÁ µî±Ş
-	private boolean[] cookableMenu; // ¿ä¸® °¡´ÉÇÑ ¸Ş´º ¸®½ºÆ®
+	private String name; // ì…°í”„ ì´ë¦„
+	private String rank; // ì…°í”„ ë“±ê¸‰
+	private boolean[] cookableMenu; // ìš”ë¦¬ ê°€ëŠ¥í•œ ë©”ë‰´ ë¦¬ìŠ¤íŠ¸
 
-	// ±âº» »ı¼ºÀÚ
+	// ê¸°ë³¸ ìƒì„±ì
 	Chef() {
 		InitChef("0", 0, 0);
 	}
 
-	// ÀÌ¸§ÀÌ ¼³Á¤µÈ »ı¼ºÀÚ ¿À¹ö·Îµù
+	// ì´ë¦„ì´ ì„¤ì •ëœ ìƒì„±ì ì˜¤ë²„ë¡œë”©
 	Chef(String name, int menuLen) {
 		int rank = (int) (Math.random() * 4);
 		InitChef(name, rank, menuLen);
 	}
 
-	// ÀÌ¸§°ú µî±ŞÀÌ ¼³Á¤µÈ »ı¼ºÀÚ ¿À¹ö·Îµù
+	// ì´ë¦„ê³¼ ë“±ê¸‰ì´ ì„¤ì •ëœ ìƒì„±ì ì˜¤ë²„ë¡œë”©
 	Chef(String name, int menuLen, int rank) {
 		InitChef(name, rank, menuLen);
 	}
 
-	// ¼ÎÇÁ ÃÊ±âÈ­ ÇÔ¼ö
+	// ì…°í”„ ì´ˆê¸°í™” í•¨ìˆ˜
 	public void InitChef(String name, int rank, int menuLen) {
-		// µî±Ş¿¡ µû¸¥ ¼ÎÇÁ À¯Çü ÃÊ±âÈ­
+		// ë“±ê¸‰ì— ë”°ë¥¸ ì…°í”„ ìœ í˜• ì´ˆê¸°í™”
 
-		// ¿À³Ê¼ÎÇÁ : ¸ğµç ¿ä¸® °¡´É
+		// ì˜¤ë„ˆì…°í”„ : ëª¨ë“  ìš”ë¦¬ ê°€ëŠ¥
 		if (rank == 0) {
 			this.name = name;
-			this.rank = "¿À³Ê¼ÎÇÁ";
+			this.rank = "ì˜¤ë„ˆì…°í”„";
 			this.cookableMenu = new boolean[menuLen];
 			for (int i = 0; i < menuLen; i++) {
 				this.cookableMenu[i] = true;
 			}
 		}
 
-		// ¸Å´ÏÀú : 1°³ »©°í °¡´É
+		// ë§¤ë‹ˆì € : 1ê°œ ë¹¼ê³  ê°€ëŠ¥
 		else if (rank == 1) {
 			this.name = name;
-			this.rank = "¸Å´ÏÀú";
+			this.rank = "ë§¤ë‹ˆì €";
 			this.cookableMenu = new boolean[menuLen];
 			for (int i = 0; i < menuLen; i++) {
 				this.cookableMenu[i] = true;
@@ -48,16 +48,16 @@ public class Chef extends Restaurant {
 			this.cookableMenu[temp] = false;
 		}
 
-		// °ß½À»ı : ¸Ş´º Àı¹İ °¡´É
+		// ê²¬ìŠµìƒ : ë©”ë‰´ ì ˆë°˜ ê°€ëŠ¥
 		else if (rank == 2) {
 			this.name = name;
-			this.rank = "°ß½À»ı";
+			this.rank = "ê²¬ìŠµìƒ";
 			this.cookableMenu = new boolean[menuLen];
 			for (int i = 0; i < menuLen; i++) {
 				this.cookableMenu[i] = true;
 			}
 
-			// ¸Ş´º Àı¹İ¸¸ °¡´ÉÇÏ°Ô ¸¸µå´Â ÄÚµå
+			// ë©”ë‰´ ì ˆë°˜ë§Œ ê°€ëŠ¥í•˜ê²Œ ë§Œë“œëŠ” ì½”ë“œ
 			boolean[] randCookableList = new boolean[this.cookableMenu.length];
 			int randCount = 0;
 			
@@ -71,7 +71,7 @@ public class Chef extends Restaurant {
 					}
 				}
 				
-				// ¸Ş´º Àı¹İ¸¸ °¡´ÉÇÏ´Ù¸é
+				// ë©”ë‰´ ì ˆë°˜ë§Œ ê°€ëŠ¥í•˜ë‹¤ë©´
 				if(randCount != (int) (this.cookableMenu.length / 2)) {
 					break;
 				}
@@ -83,10 +83,10 @@ public class Chef extends Restaurant {
 			this.cookableMenu = randCookableList;
 		}
 
-		// ¾Æ¸£¹ÙÀÌÆ® : ¸Ş´º 1°³ °¡´É
+		// ì•„ë¥´ë°”ì´íŠ¸ : ë©”ë‰´ 1ê°œ ê°€ëŠ¥
 		else if (rank == 3) {
 			this.name = name;
-			this.rank = "¾Æ¸£¹ÙÀÌÆ®";
+			this.rank = "ì•„ë¥´ë°”ì´íŠ¸";
 			this.cookableMenu = new boolean[menuLen];
 			for (int i = 0; i < menuLen; i++) {
 				this.cookableMenu[i] = false;
@@ -98,9 +98,9 @@ public class Chef extends Restaurant {
 		return;
 	}
 
-	// ¿ä¸® °¡´ÉÇÑ ¸Ş´º Ãâ·Â
+	// ìš”ë¦¬ ê°€ëŠ¥í•œ ë©”ë‰´ ì¶œë ¥
 	public void PrintCookableMenu(Menu[] menuList, int menuLen) {
-		System.out.print(this.name + "°¡ ¿ä¸® °¡´ÉÇÑ ¸Ş´º : ");
+		System.out.print(this.name + "ê°€ ìš”ë¦¬ ê°€ëŠ¥í•œ ë©”ë‰´ : ");
 		for (int i = 0; i < menuLen; i++) {
 			if (this.cookableMenu[i]) {
 				System.out.print(menuList[i].GetName() + " ");
@@ -111,17 +111,17 @@ public class Chef extends Restaurant {
 	}
 
 	
-	// ¼ÎÇÁÀÇ ÀÌ¸§ ¹İÈ¯
+	// ì…°í”„ì˜ ì´ë¦„ ë°˜í™˜
 	public String GetName() {
 		return this.name;
 	}
 	
-	// ¼ÎÇÁÀÇ µî±Ş ¹İÈ¯
+	// ì…°í”„ì˜ ë“±ê¸‰ ë°˜í™˜
 	public String GetRank() {
 		return this.rank;
 	}
 
-	// ¼ÎÇÁ°¡ °¡´ÉÇÑ ¿ä¸®ÀÎÁö È®ÀÎ
+	// ì…°í”„ê°€ ê°€ëŠ¥í•œ ìš”ë¦¬ì¸ì§€ í™•ì¸
 	public boolean IsCookable(int guestSelectMenuIndex) {
 		boolean isCookable = false;
 
@@ -132,27 +132,27 @@ public class Chef extends Restaurant {
 		return isCookable;
 	}
 
-	// ±âº» ¼ÎÇÁ Ãâ·Â
-	// ÀÌ¸§ : µî±Ş
+	// ê¸°ë³¸ ì…°í”„ ì¶œë ¥
+	// ì´ë¦„ : ë“±ê¸‰
 	public void PrintChef(Chef chef, int chefLen) {
 		System.out.println(chef.GetName() + " " + chef.GetRank());
 		return;
 	}
 
-	// ÀÚ¼¼ÇÑ ¼ÎÇÁ Ãâ·Â
-	// ÀÌ¸§ : µî±Ş, ¿ä¸® °¡´ÉÇÑ ¸Ş´º
+	// ìì„¸í•œ ì…°í”„ ì¶œë ¥
+	// ì´ë¦„ : ë“±ê¸‰, ìš”ë¦¬ ê°€ëŠ¥í•œ ë©”ë‰´
 	public void PrintChefDetail(Chef chef, Menu[] menuList) {
 		System.out.println(chef.GetName() + " " + chef.GetRank() + ",");
 		chef.PrintCookableMenu(menuList, menuList.length);
 		return;
 	}
 
-	// 0¹ø ¼Õ´ÔÀÌ ÁÖ¹®ÇÑ ¸Ş´º¸¦ Á÷¿øÀÌ ¿ä¸®
+	// 0ë²ˆ ì†ë‹˜ì´ ì£¼ë¬¸í•œ ë©”ë‰´ë¥¼ ì§ì›ì´ ìš”ë¦¬
 	public boolean Cook(Restaurant restaurant, Menu[] menuList, Guest[] guestList) {
 		if (this.IsCookable(guestList[0].GetSelectMenuIndex())) {
 			restaurant.AdjustItemStock(menuList[guestList[0].GetSelectMenuIndex()].GetUseItemList());
 			restaurant.SetItemStock();
-			System.out.println(guestList[0].GetSelectMenuName(menuList) + "´Â " + this.name + "ÀÌ ¿ä¸®ÇÕ´Ï´Ù.");
+			System.out.println(guestList[0].GetSelectMenuName(menuList) + "ëŠ” " + this.name + "ì´ ìš”ë¦¬í•©ë‹ˆë‹¤.");
 			return true;
 		}
 
