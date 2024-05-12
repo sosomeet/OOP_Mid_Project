@@ -1,12 +1,12 @@
 package oop_project;
 
 public class Guest extends Restaurant {
-	private String name; // ¼Õ´ÔÀÇ ÀÌ¸§
-	private int category; // ¼Õ´ÔÀÇ À¯Çü 0 = Æò¹ü, 1 = ´ë½Ä°¡, 2 = ½Å¸Ş´º
-	private int selectMenuIndex; // ¼Õ´ÔÀÌ ¼±ÅÃÇÑ ¸Ş´ºÀÇ index
-	private int selectMenuCount; // ¼Õ´ÔÀÌ ¼±ÅÃÇÑ ¸Ş´ºÀÇ °³¼ö
+	private String name; // ì†ë‹˜ì˜ ì´ë¦„
+	private int category; // ì†ë‹˜ì˜ ìœ í˜• 0 = í‰ë²”, 1 = ëŒ€ì‹ê°€, 2 = ì‹ ë©”ë‰´
+	private int selectMenuIndex; // ì†ë‹˜ì´ ì„ íƒí•œ ë©”ë‰´ì˜ index
+	private int selectMenuCount; // ì†ë‹˜ì´ ì„ íƒí•œ ë©”ë‰´ì˜ ê°œìˆ˜
 
-	// ±âº» »ı¼ºÀÚ
+	// ê¸°ë³¸ ìƒì„±ì
 	Guest() {
 		this.name = "";
 		this.category = 0;
@@ -14,49 +14,49 @@ public class Guest extends Restaurant {
 		this.selectMenuCount = 0;
 	}
 
-	// n¸í »ı¼ºµÇ´Â ¼Õ´Ô »ı¼ºÀÚ ¿À¹ö·Îµù
+	// nëª… ìƒì„±ë˜ëŠ” ì†ë‹˜ ìƒì„±ì ì˜¤ë²„ë¡œë”©
 	Guest(int menuLen) {
-		this.category = (int) (Math.random() * 3); // ¹«ÀÛÀ§ À¯Çü ¼³Á¤
+		this.category = (int) (Math.random() * 3); // ë¬´ì‘ìœ„ ìœ í˜• ì„¤ì •
 		AddGuest("", menuLen, this.category);
 
 	}
 
-	// ÀÌ¸§ÀÌ ¼³Á¤µÈ »ı¼ºÀÚ ¿À¹ö·Îµù
+	// ì´ë¦„ì´ ì„¤ì •ëœ ìƒì„±ì ì˜¤ë²„ë¡œë”©
 	Guest(String name, int menuLen) {
 		AddGuest(name, menuLen, this.category);
 
 	}
 
-	// ÀÌ¸§°ú ¼Õ´Ô À¯ÇüÀÌ ¼³Á¤µÈ »ı¼ºÀÚ ¿À¹ö·Îµù
+	// ì´ë¦„ê³¼ ì†ë‹˜ ìœ í˜•ì´ ì„¤ì •ëœ ìƒì„±ì ì˜¤ë²„ë¡œë”©
 	Guest(String name, int menuLen, int category) {
 		AddGuest(name, menuLen, category);
 	}
 
-	// ¼Õ´Ô Ãß°¡ ÇÔ¼ö
+	// ì†ë‹˜ ì¶”ê°€ í•¨ìˆ˜
 	public void AddGuest(String name, int menuLen, int category) {
-		boolean isCreated = false; // ¼Õ´ÔÀÌ Ãß°¡µÇ¾ú´ÂÁö È®ÀÎ
+		boolean isCreated = false; // ì†ë‹˜ì´ ì¶”ê°€ë˜ì—ˆëŠ”ì§€ í™•ì¸
 
-		while (!isCreated) { // ¼Õ´ÔÀÌ Ãß°¡µÉ ¶§ ±îÁö ¹İº¹
+		while (!isCreated) { // ì†ë‹˜ì´ ì¶”ê°€ë  ë•Œ ê¹Œì§€ ë°˜ë³µ
 
-			if (name.equals("")) { // ÀÌ¸§ÀÌ ¼³Á¤µÇÁö ¾Ê¾ÒÀ» °æ¿ì
-				if (category == 0) { // Æò¹üÇÑ ¼Õ´Ô, 1~2°³ ÁÖ¹®
-					this.name = "Æò¹üÇÑ ¼Õ´Ô";
+			if (name.equals("")) { // ì´ë¦„ì´ ì„¤ì •ë˜ì§€ ì•Šì•˜ì„ ê²½ìš°
+				if (category == 0) { // í‰ë²”í•œ ì†ë‹˜, 1~2ê°œ ì£¼ë¬¸
+					this.name = "í‰ë²”í•œ ì†ë‹˜";
 					this.selectMenuIndex = (int) (Math.random() * menuLen);
 					this.selectMenuCount = (int) (Math.random() * 2) + 1;
 					isCreated = true;
 				}
 
-				else if (category == 1) { // ´ë½Ä°¡ ¼Õ´Ô, 2~5°³ ÁÖ¹®
-					this.name = "´ë½Ä°¡ ¼Õ´Ô";
+				else if (category == 1) { // ëŒ€ì‹ê°€ ì†ë‹˜, 2~5ê°œ ì£¼ë¬¸
+					this.name = "ëŒ€ì‹ê°€ ì†ë‹˜";
 					this.selectMenuIndex = (int) (Math.random() * menuLen);
 					this.selectMenuCount = (int) (Math.random() * 4) + 2;
 					isCreated = true;
 				}
 
-				else if (category == 2) { // ½Å¸Ş´º ¿ä±¸ ¼Õ´Ô, »õ·Î¿î ¸Ş´º Á¦ÀÛ
-					this.category = (int) (Math.random() * 3); // ½Å¸Ş´º ¿ä±¸ ¼Õ´ÔÀÇ È®·ü Á¶Á¤ ÄÚµå 1/3 * 1/3 = 1/9 È®·ü·Î µîÀå
+				else if (category == 2) { // ì‹ ë©”ë‰´ ìš”êµ¬ ì†ë‹˜, ìƒˆë¡œìš´ ë©”ë‰´ ì œì‘
+					this.category = (int) (Math.random() * 3); // ì‹ ë©”ë‰´ ìš”êµ¬ ì†ë‹˜ì˜ í™•ë¥  ì¡°ì • ì½”ë“œ 1/3 * 1/3 = 1/9 í™•ë¥ ë¡œ ë“±ì¥
 					if (category == 2) {
-						this.name = "½Å¸Ş´º ¼Õ´Ô";
+						this.name = "ì‹ ë©”ë‰´ ì†ë‹˜";
 						this.selectMenuIndex = (int) (Math.random() * menuLen);
 						this.selectMenuCount = 1;
 						isCreated = true;
@@ -64,7 +64,7 @@ public class Guest extends Restaurant {
 						isCreated = false;
 					}
 				}
-			} else { // ÀÌ¸§ÀÌ ¼³Á¤µÆÀ» °æ¿ì
+			} else { // ì´ë¦„ì´ ì„¤ì •ëì„ ê²½ìš°
 				if (category == 0) {
 					this.name = name;
 					this.selectMenuIndex = (int) (Math.random() * menuLen);
@@ -92,66 +92,66 @@ public class Guest extends Restaurant {
 		return;
 	}
 
-	// ¼Õ´Ô ÀÌ¸§ ¹İÈ¯
+	// ì†ë‹˜ ì´ë¦„ ë°˜í™˜
 	public String GetName() {
 		return this.name;
 	}
 
-	// ¼Õ´Ô À¯Çü ¹İÈ¯
+	// ì†ë‹˜ ìœ í˜• ë°˜í™˜
 	public int GetCategory() {
 		return this.category;
 	}
 
-	// ¼Õ´ÔÀÌ ¼±ÅÃÇÑ ¸Ş´ºÀÇ ÀÎµ¦½º ¹İÈ¯
+	// ì†ë‹˜ì´ ì„ íƒí•œ ë©”ë‰´ì˜ ì¸ë±ìŠ¤ ë°˜í™˜
 	public int GetSelectMenuIndex() {
 		return this.selectMenuIndex;
 	}
 
-	// ¼Õ´ÔÀÌ ¼±ÅÃÇÑ ¸Ş´ºÀÇ ÀÌ¸§ ¹İÈ¯
+	// ì†ë‹˜ì´ ì„ íƒí•œ ë©”ë‰´ì˜ ì´ë¦„ ë°˜í™˜
 	public String GetSelectMenuName(Menu[] menuList) {
 		return menuList[this.selectMenuIndex].GetName();
 	}
 
-	// ¼Õ´ÔÀÌ ¼±ÅÃÇÑ ¸Ş´ºÀÇ °³¼ö ¹İÈ¯
+	// ì†ë‹˜ì´ ì„ íƒí•œ ë©”ë‰´ì˜ ê°œìˆ˜ ë°˜í™˜
 	public int GetSelectCount() {
 		return this.selectMenuCount;
 	}
 
-	// °£´ÜÇÑ ¼Õ´Ô ¸®½ºÆ® Ãâ·Â
-	// ¼Õ´Ô n¸í
-	// ¸Ş´º¸í n°³
+	// ê°„ë‹¨í•œ ì†ë‹˜ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
+	// ì†ë‹˜ nëª…
+	// ë©”ë‰´ëª… nê°œ
 	public void PrintGuestListSimple(Guest[] guestList, int guestLen, Menu[] menuList) {
-		System.out.println("¼Õ´Ô " + guestLen + "¸í");
+		System.out.println("ì†ë‹˜ " + guestLen + "ëª…");
 		for (int i = 0; i < guestLen; i++) {
-			System.out.println(guestList[i].GetSelectMenuName(menuList) + " " + guestList[i].GetSelectCount() + "°³");
+			System.out.println(guestList[i].GetSelectMenuName(menuList) + " " + guestList[i].GetSelectCount() + "ê°œ");
 		}
 		System.out.println();
 		
 		return;
 	}
 
-	// ±âº» ¼Õ´Ô ¸®½ºÆ® Ãâ·Â
-	// ¼Õ´Ô n¸í
-	// ¼Õ´Ô ÀÌ¸§ : ¸Ş´º¸í n°³
+	// ê¸°ë³¸ ì†ë‹˜ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
+	// ì†ë‹˜ nëª…
+	// ì†ë‹˜ ì´ë¦„ : ë©”ë‰´ëª… nê°œ
 	public void PrintGuestList(Guest[] guestList, int guestLen, Menu[] menuList) {
-		System.out.println("¼Õ´Ô " + guestLen + "¸í");
+		System.out.println("ì†ë‹˜ " + guestLen + "ëª…");
 		for (int i = 0; i < guestLen; i++) {
 			System.out.println(guestList[i].GetName() + " : " + guestList[i].GetSelectMenuName(menuList) + " "
-					+ guestList[i].GetSelectCount() + "°³");
+					+ guestList[i].GetSelectCount() + "ê°œ");
 		}
 		System.out.println();
 		
 		return;
 	}
 
-	// ÀÚ¼¼ÇÑ ¼Õ´Ô ¸®½ºÆ® Ãâ·Â
-	// ¼Õ´Ô n¸í
-	// ¼Õ´Ô ÀÌ¸§ À¯Çü : n	¸Ş´º¸í n°³
+	// ìì„¸í•œ ì†ë‹˜ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
+	// ì†ë‹˜ nëª…
+	// ì†ë‹˜ ì´ë¦„ ìœ í˜• : n	ë©”ë‰´ëª… nê°œ
 	public void PrintGuestListDetail(Guest[] guestList, int guestLen, Menu[] menuList) {
-		System.out.println("¼Õ´Ô " + guestLen + "¸í");
+		System.out.println("ì†ë‹˜ " + guestLen + "ëª…");
 		for (int i = 0; i < guestLen; i++) {
-			System.out.print(guestList[i].GetName() + " À¯Çü : " + guestList[i].GetCategory() + " \t");
-			System.out.println(guestList[i].GetSelectMenuName(menuList) + guestList[i].GetSelectCount() + "°³");
+			System.out.print(guestList[i].GetName() + " ìœ í˜• : " + guestList[i].GetCategory() + " \t");
+			System.out.println(guestList[i].GetSelectMenuName(menuList) + guestList[i].GetSelectCount() + "ê°œ");
 		}
 		System.out.println();
 		
