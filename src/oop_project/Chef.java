@@ -14,11 +14,11 @@ public class Chef extends Restaurant {
 		int rank = (int) (Math.random() * 4);
 		AddChef(name, rank, menuLen);
 	}
-	
+
 	Chef(String name, int menuLen, int rank) {
 		AddChef(name, rank, menuLen);
 	}
-	
+
 	public void AddChef(String name, int rank, int menuLen) {
 		if (rank == 0) {
 			this.name = name;
@@ -87,7 +87,17 @@ public class Chef extends Restaurant {
 	public String GetName() {
 		return this.name;
 	}
-	
+
+	public boolean IsCookable(int guestSelectMenuIndex) {
+		boolean isCookable = false;
+
+		if (this.cookableMenu[guestSelectMenuIndex]) {
+			isCookable = true;
+		}
+
+		return isCookable;
+	}
+
 	public void PrintChefList(Chef chef, int chefLen) {
 		System.out.println(chef.GetName() + " " + chef.GetRank());
 		return;
@@ -97,6 +107,17 @@ public class Chef extends Restaurant {
 		System.out.println(chef.GetName() + " " + chef.GetRank());
 		chef.PrintCookableMenu(menuList, menuList.length);
 		return;
+	}
+
+	public boolean Cook(Restaurant restaurant, Menu[] menuList, Guest[] guestList) {
+		if (this.IsCookable(guestList[0].GetSelectMenuIndex())) {
+			restaurant.AdjustItemStock(menuList[guestList[0].GetSelectMenuIndex()].GetUseItemList());
+			restaurant.SetItemStock();
+			System.out.println(guestList[0].GetSelectMenuName(menuList) + "는 " + this.name + "이 요리합니다.");
+			return true;
+		}
+
+		return false;
 	}
 
 }

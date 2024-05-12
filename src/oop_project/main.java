@@ -9,7 +9,7 @@ public class Main {
 			newMenuList[i] = menuList[i];
 		}
 		newMenuList[i] = new Menu(name);
-		menuList = newMenuList;	
+		menuList = newMenuList;
 		return menuList;
 	}
 
@@ -78,52 +78,53 @@ public class Main {
 		int i;
 
 		for (i = 0; i < count; i++) {
-			restaurant.AdjustIncome(menuList[guestList[i].GetSelectMenuIndex()].GetPrice() * guestList[i].GetSelectCount());
+			restaurant.AdjustIncome(
+					menuList[guestList[i].GetSelectMenuIndex()].GetPrice() * guestList[i].GetSelectCount());
 		}
-		
+
 		for (i = 0; i < (guestList.length - count); i++) {
 			newGuestList[i] = guestList[i + count];
 		}
 		guestList = newGuestList;
 		return guestList;
 	}
-	
+
 	public static void PrintMenuList(Menu[] menuList, Restaurant restaurant) {
 		System.out.println("메뉴 " + menuList.length + "개");
-		for(int i = 0 ; i< menuList.length; i++) {
-			menuList[i].PrintMenuList(menuList[i], restaurant.GetItemNameList());
+		for (int i = 0; i < menuList.length; i++) {
+			menuList[i].PrintMenu(restaurant.GetItemNameList());
 		}
 		System.out.println();
 		return;
 	}
-	
+
 	public static void PrintMenuListDetail(Menu[] menuList, Restaurant restaurant) {
 		System.out.println("메뉴 " + menuList.length + "개");
-		for(int i = 0 ; i< menuList.length; i++) {
-			menuList[i].PrintMenuListDetail(menuList[i], restaurant.GetItemNameList());
+		for (int i = 0; i < menuList.length; i++) {
+			menuList[i].PrintMenuDetail(restaurant.GetItemNameList());
 		}
 		System.out.println();
 		return;
 	}
-	
+
 	public static void PrintChefList(Chef[] chefList) {
 		System.out.println("직원 " + chefList.length + "명");
-		for(int i = 0; i < chefList.length; i++) {
+		for (int i = 0; i < chefList.length; i++) {
 			chefList[i].PrintChefList(chefList[i], chefList.length);
 		}
 		System.out.println();
 		return;
 	}
-	
+
 	public static void PrintChefListDetail(Chef[] chefList, Menu[] menuList) {
 		System.out.println("직원 " + chefList.length + "명");
-		for(int i = 0; i < chefList.length; i++) {
+		for (int i = 0; i < chefList.length; i++) {
 			chefList[i].PrintChefListDetail(chefList[i], menuList);
 		}
 		System.out.println();
 		return;
 	}
-	
+
 	public static void PrintGuestListSimple(Guest[] guestList, Menu[] menuList) {
 		System.out.println("손님 " + guestList.length + "명");
 		for (int i = 0; i < guestList.length; i++) {
@@ -153,13 +154,28 @@ public class Main {
 		return;
 	}
 
+	public static Guest[] Cook(int cooked, Restaurant restaurant, Menu[] menuList, Chef[] chefList, Guest[] guestList) {
+		for (int k = 0; k <= cooked; k++) {
+			for (int i = 0; i < chefList.length; i++) {
+				if (chefList[i].Cook(restaurant, menuList, guestList)) {
+					guestList = LeaveGuest(1, restaurant, guestList, menuList);
+					break;
+				}
+			}
+		}
+
+		return guestList;
+	}
+	
 	public static void main(String[] args) {
+		int turn = 0;
+
 		Restaurant restaurant = new Restaurant();
 
 		restaurant.PrintRestaurant();
 
 		System.out.println("--------------------------");
-		
+
 		Menu[] menuList = new Menu[0];
 
 		Chef[] chefList = new Chef[0];
@@ -173,32 +189,37 @@ public class Main {
 		menuList = AddMenu("또띠아", menuList);
 		PrintMenuList(menuList, restaurant);
 		// PrintMenuListDetail(menuList, restaurant);
-		
+
 		System.out.println("--------------------------");
 
-		chefList = AddChef("요리사1", 0, chefList, menuList.length);
-		chefList = AddChef("요리사2", 1, chefList, menuList.length);
-		chefList = AddChef("요리사3", 2, chefList, menuList.length);
-		chefList = AddChef("요리사4", 3, chefList, menuList.length);
+		chefList = AddChef("요리사1", 3, chefList, menuList.length);
+		chefList = AddChef("요리사2", 2, chefList, menuList.length);
+		chefList = AddChef("요리사3", 1, chefList, menuList.length);
+		chefList = AddChef("요리사4", 0, chefList, menuList.length);
 		chefList = AddChef("요리사5", chefList, menuList.length);
 		PrintChefList(chefList);
 		// PrintChefListDetail(chefList, menuList);
 
 		System.out.println("--------------------------");
-		
+
 		guestList = AddGuest(10, guestList, menuList.length);
 		guestList = AddGuest("착한놈", guestList, menuList.length);
 		guestList = AddGuest("나쁜놈", 1, guestList, menuList.length);
 		PrintGuestListSimple(guestList, menuList);
 		// PrintGuestList(guestList, menuList);
 		// PrintGuestListDetail(guestList, menuList);
-		
+
+		guestList = Cook(10, restaurant, menuList, chefList, guestList);
+
 		restaurant.PrintIncome();
-		
+		restaurant.PrintRestaurant();
+
 		System.out.println("--------------------------");
-		
-		guestList = LeaveGuest(12, restaurant, guestList, menuList);
+
 		PrintGuestListSimple(guestList, menuList);
+		
+		restaurant.InitItemStock();
+		restaurant.PrintRestaurant();
 		restaurant.PrintIncome();
 
 	}
