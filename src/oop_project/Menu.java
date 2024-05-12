@@ -13,20 +13,20 @@ public class Menu extends Restaurant {
 	Menu(String name) {
 		this.name = name;
 		this.price = 0;
-		this.useItemList = new int[super.GetitemLen()];
-		for (int i = 0; i < super.GetitemLen(); i++) {
+		this.useItemList = new int[super.GetItemLen()];
+		for (int i = 0; i < super.GetItemLen(); i++) {
 			useItemList[i] = (int) (Math.random() * 3);
 			this.price += useItemList[i] * super.GetItemPrice()[i];
 		}
 		this.price = (int)(this.price * 3.5f / 100)*100;
 	}
 
-	public void PrintItem(String[] itemNameList) {
+	public void PrintMenu(String[] itemNameList) {
 		System.out.println("[" + this.name + "] " + this.price + "¿ø");
 		return;
 	}
 
-	public void PrintItemDetail(String[] itemNameList) {
+	public void PrintMenuDetail(String[] itemNameList) {
 		System.out.println("[" + this.name + "] " + this.price + "¿ø");
 		for (int i = 0; i < useItemList.length; i++) {
 			System.out.print(itemNameList[i] + this.useItemList[i] + "°³ ");
@@ -43,13 +43,9 @@ public class Menu extends Restaurant {
 		return this.price;
 	}
 
-	public void PrintMenuList(Menu menu, String[] itemNameList) {
-		menu.PrintItem(itemNameList);
-		return;
+	public int[] GetUseItemList() {
+		return this.useItemList;
 	}
-
-	public void PrintMenuListDetail(Menu menu, String[] itemNameList) {
-		menu.PrintItemDetail(itemNameList);
-		return;
-	}
+	
+	
 }
