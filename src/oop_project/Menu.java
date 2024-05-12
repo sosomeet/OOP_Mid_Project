@@ -31,18 +31,18 @@ public class Menu extends Restaurant {
 	}
     // 메뉴의 정보를 보여주는 함수
 	public void PrintMenu(String[] itemNameList) {
-		System.out.println("[" + this.name + "] " + this.price + "��");  // 메뉴의 이름과 가격을 출력
+		System.out.println("[" + this.name + "] " + this.price + "원");  // 메뉴의 이름과 가격을 출력
 		return;  
 	}
 	
 	// 메뉴의 상세정보를 나타내는 함수
     // 메뉴의 이름과 가격, 사용된 각 재료의 이름과 개수 출력함
 	public void PrintMenuDetail(String[] itemNameList) {
-		System.out.println("[" + this.name + "] " + this.price + "��");  // 메뉴의 이름과 가격 출력
+		System.out.println("[" + this.name + "] " + this.price + "원");  // 메뉴의 이름과 가격 출력
 		
 		// for 문을 통해 메뉴에 쓰인 각 재료명과 개수를 출력
 		for (int i = 0; i < useItemList.length; i++) {
-			System.out.print(itemNameList[i] + this.useItemList[i] + "�� "); 
+			System.out.print(itemNameList[i] + this.useItemList[i] + "개 "); 
 			// itemNameList에서 해당 인덱스의 항목을 가져와 그 이름, 그 항목이 메뉴에서 사용된 개수 출력
 		}
 		System.out.println();
