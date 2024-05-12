@@ -1,7 +1,7 @@
 package oop_project;
 
 class Restaurant {
-	private String[] itemNameList = { "Å¸ÄÚ", "¼Ò½º", "°í±â", "Ä¡Áî", "Ã¤¼Ò", "º¸¿ï", "ºê¸®¶Ç" };
+	private String[] itemNameList = { "íƒ€ì½”", "ì†ŒìŠ¤", "ê³ ê¸°", "ì¹˜ì¦ˆ", "ì±„ì†Œ", "ë³´ìš¸", "ë¸Œë¦¬ë˜" };
 
 	private int itemLen;
 	private int[] itemPriceList;
@@ -28,7 +28,7 @@ class Restaurant {
 	public void PrintRestaurant() {
 		for (int i = 0; i < itemLen; i++) {
 			System.out
-					.println("[" + itemNameList[i] + "] " + this.itemPriceList[i] + "¿ø, Àç°í : " + this.itemStockList[i]);
+					.println("[" + itemNameList[i] + "] " + this.itemPriceList[i] + "ì›, ì¬ê³  : " + this.itemStockList[i]);
 		}
 		System.out.println();
 		return;
@@ -36,7 +36,7 @@ class Restaurant {
 
 
 	public void PrintIncome() {
-		System.out.println("¼öÀÍ : " + this.income + "¿ø\n");
+		System.out.println("ìˆ˜ìµ : " + this.income + "ì›\n");
 		return;
 	}
 
@@ -76,8 +76,8 @@ class Restaurant {
 	public void SetItemStock() {
 		for(int i = 0 ; i< this.itemStockList.length; i++) {
 			if(this.itemStockList[i] <= 0) {
-				System.out.println("\n" + this.itemNameList[i] + "À» Àç¹ßÁÖÇß½À´Ï´Ù.");
-				System.out.println(("¼öÀÍ " + this.itemPriceList[i] * (10 - this.itemStockList[i])) + "¿ø Â÷°¨");
+				System.out.println("\n" + this.itemNameList[i] + "ì„ ì¬ë°œì£¼í–ˆìŠµë‹ˆë‹¤.");
+				System.out.println(("ìˆ˜ìµ " + this.itemPriceList[i] * (10 - this.itemStockList[i])) + "ì› ì°¨ê°");
 				this.income -= this.itemPriceList[i] * (10 - this.itemStockList[i]);
 				this.itemStockList[i] = 10;
 			}
@@ -88,12 +88,12 @@ class Restaurant {
 	public void InitItemStock() {
 		int decreaseIncome = 0;
 		for(int i = 0 ; i< this.itemStockList.length; i++) {
-			System.out.println(this.itemNameList[i] + "À» Àç¹ßÁÖÇß½À´Ï´Ù.");
+			System.out.println(this.itemNameList[i] + "ì„ ì¬ë°œì£¼í–ˆìŠµë‹ˆë‹¤.");
 			this.income -= this.itemPriceList[i] * (10 - this.itemStockList[i]);
 			decreaseIncome += this.itemPriceList[i] * (10 - this.itemStockList[i]);
 			this.itemStockList[i] = 10;
 		}
-		System.out.println("¼öÀÍ " + decreaseIncome + "¿ø Â÷°¨");
+		System.out.println("ìˆ˜ìµ " + decreaseIncome + "ì› ì°¨ê°");
 		return;
 	}
 
