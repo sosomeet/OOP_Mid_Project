@@ -213,6 +213,11 @@ public class Main {
 			int input = scan.nextInt();
 			if (input == 0) {
 				System.out.println("프로그램을 종료합니다.");
+				sleep(1);
+				System.out.println("■■■■■■■■■■■■■■■■■■");
+				System.out.println("■ You Loved Taco ■");
+				System.out.println("■■■■■■■■■■■■■■■■■■\n");
+				sleep(3);
 				scan.close();
 				System.exit(0);
 				return;
@@ -260,6 +265,11 @@ public class Main {
 			int input = scan.nextInt();
 			if (input == 0) {
 				System.out.println("프로그램을 종료합니다.");
+				sleep(1);
+				System.out.println("■■■■■■■■■■■■■■■■■■");
+				System.out.println("■ You Loved Taco ■");
+				System.out.println("■■■■■■■■■■■■■■■■■■\n");
+				sleep(3);
 				scan.close();
 				return;
 			} else if (input == 1) {
