@@ -10,6 +10,7 @@ public class Restaurant {
 	private int[][] itemStockArray;
 	private int[][] itemPriceArray;
 
+	// remove와 add 기능을 사용하기 위해 ArrayList로 생성
 	private ArrayList<Menu> menuList;
 	private ArrayList<Chef> chefList;
 	private ArrayList<Guest> guestList;
@@ -84,6 +85,7 @@ public class Restaurant {
 	}
 
 	public boolean assignChef(int chefIndex, int menuIndex, int orderIndex) {
+		// !(지금 요리중인지) && 요리 가능한 메뉴인지
 		if (!chefList.get(chefIndex).isCooking && chefList.get(chefIndex).cookableArray[menuIndex]) {
 			this.chefList.get(chefIndex).cookOrderIndex = orderIndex;
 			System.out.print("[" + chefList.get(chefIndex).name + "] 요리사가 ");

@@ -6,8 +6,8 @@ public class Order {
 	int selectMenuIndex;
 	int count;
 	int endTurn;
-	boolean isCooked;
 	int chefIndex;
+	boolean isCooked;
 	
 	Order(int category, ArrayList<Menu> menuList){
 		selectMenuIndex = (int)(Math.random() * menuList.size());

@@ -122,12 +122,20 @@ public class Main {
 
 	// 주문을 요리사에게 배정
 	public static void assignOrder(int turn, Restaurant restaurant) {
+		// 요리가 됐는지 확인하는 flag
 		boolean isCooked = false;
 
+		// 아직 처리하지 못한 주문의 길이만큼 반복
 		for (int i = 0; i < restaurant.getOrderLen(); i++) {
 			isCooked = false;
+			
+			// 손님이 선택한 메뉴의 인덱스
 			int selectMenuIndex = restaurant.getOrderList().get(i).selectMenuIndex;
+			
+			// 셰프의 수 만큼 반복
 			for (int j = 0; j < restaurant.getChefLen(); j++) {
+				// !(주문이 이미 요리 시작했는지) && 일할 수 있는 셰프가 있는지
+				// true면 요리 시작
 				if (!restaurant.getOrderList().get(i).isCooked && restaurant.assignChef(j, selectMenuIndex, i)) {
 					restaurant.reduceItem(selectMenuIndex);
 					restaurant.addItem();
@@ -138,6 +146,8 @@ public class Main {
 					break;
 				}
 			}
+			
+			// 요리가 시작되지 않고, 요리 상태가 요리 중이지도 않으면
 			if (!isCooked && !restaurant.getOrderList().get(i).isCooked) {
 				System.out.println("요리할 수 있는 사람이 없습니다.");
 			}
@@ -148,22 +158,26 @@ public class Main {
 
 	// 주문 중 완료된 것이 있는지 확인
 	public static void checkOrder(int turn, Restaurant restaurant) {
-		int pay = 0;
-
 		for (int i = 0; i < restaurant.getOrderLen(); i++) {
+			// 만약 주문이 완성되는 턴이 지금 턴과 같다면
 			if (restaurant.getOrderList().get(i).endTurn == turn) {
+				
 				// 가격 계산
-				pay = restaurant.getOrderList().get(i).count;
+				int pay = restaurant.getOrderList().get(i).count;
 				pay *= restaurant.getMenuList().get(restaurant.getOrderList().get(i).selectMenuIndex).price;
 				restaurant.adjustIncome(pay);
 
+				// 셰프의 상태 변경
 				restaurant.getChefList().get(restaurant.getOrderList().get(i).chefIndex).isCooking = false;
 				System.out.print(
 						"[" + restaurant.getChefList().get(restaurant.getOrderList().get(i).chefIndex).name + "] : ");
 				System.out.println(
 						"주문하신 [" + restaurant.getMenuList().get(restaurant.getOrderList().get(i).selectMenuIndex).name
 								+ "] 나왔습니다.");
+				
+				// 주문 완료 시 리스트에서 제외
 				restaurant.leaveOrder(i);
+				// 손님이 떠나는 턴
 				restaurant.getGuestList().get(i).leaveTurn = turn + 1;
 			}
 		}
@@ -194,7 +208,7 @@ public class Main {
 		System.out.println("7. 자세한 셰프 확인");
 	}
 
-	public static void printWokingInputList() {
+	public static void printWokingOption() {
 		System.out.println("\n무엇을 하시겠습니까?");
 		System.out.println("0. 프로그램 종료");
 		System.out.println("1. 영업 진행");
@@ -212,7 +226,7 @@ public class Main {
 		while (true) {
 			int input = scan.nextInt();
 			if (input == 0) {
-				System.out.println("프로그램을 종료합니다.");
+				System.out.println("프로그램을 종료합니다.\n");
 				sleep(1);
 				System.out.println("■■■■■■■■■■■■■■■■■■");
 				System.out.println("■ You Loved Taco ■");
@@ -264,7 +278,7 @@ public class Main {
 
 			int input = scan.nextInt();
 			if (input == 0) {
-				System.out.println("프로그램을 종료합니다.");
+				System.out.println("프로그램을 종료합니다.\n");
 				sleep(1);
 				System.out.println("■■■■■■■■■■■■■■■■■■");
 				System.out.println("■ You Loved Taco ■");
@@ -274,7 +288,6 @@ public class Main {
 				return;
 			} else if (input == 1) {
 				while (turn != 13) {
-					int rand = (int) (Math.random() * 2);
 					System.out.println("\n" + (day + 1) + "일 " + (turn + 8) + "시");
 					if ((int) (Math.random() * 2) == 1) {
 						addGuest(restaurant);
@@ -288,10 +301,10 @@ public class Main {
 					turn++;
 					sleep(1);
 
-					System.out.println("@일시정지하고 싶다면 0을 입력하십시오.@");
+					System.out.println("※일시정지하고 싶다면 0을 입력하십시오※");
 					String inputTemp = scan.next();
 					if (inputTemp.equals("0")) {
-						printWokingInputList();
+						printWokingOption();
 						selectWorkingOption(scan, restaurant);
 					}
 					
@@ -300,7 +313,7 @@ public class Main {
 				restaurant.initChef();
 				restaurant.initGuest();
 				restaurant.initOrder();
-				System.out.println("하루를 종료합니다.");
+				System.out.println("\n하루를 종료합니다.");
 				restaurant.printIncome();
 				System.out.println();
 				
