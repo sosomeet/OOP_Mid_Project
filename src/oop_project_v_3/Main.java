@@ -249,6 +249,10 @@ public class Main {
 		Restaurant restaurant = new Restaurant();
 		initRestaurant(restaurant);
 
+		System.out.println("■■■■■■■■■■■■■■■");
+		System.out.println("■ I Love Taco ■");
+		System.out.println("■■■■■■■■■■■■■■■\n");
+		
 		while (day != 30) {
 			System.out.println("하루를 시작합니다.");
 			printStartDayInputList();
