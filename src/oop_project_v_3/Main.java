@@ -208,7 +208,7 @@ public class Main {
 		System.out.println("9. 자세한 셰프 확인");
 	}
 
-	public static void selectWorkingOption(Scanner scan, int day, int turn, Restaurant restaurant) {
+	public static void selectWorkingOption(Scanner scan, Restaurant restaurant) {
 		while (true) {
 			int input = scan.nextInt();
 			if (input == 0) {
@@ -219,31 +219,22 @@ public class Main {
 				return;
 			} else if (input == 2) {
 				restaurant.printItem();
-				day--;
 			} else if (input == 3) {
 				restaurant.printMenu();
-				day--;
 			} else if (input == 4) {
 				restaurant.printChef();
-				day--;
 			} else if (input == 5) {
 				restaurant.printGuest();
-				day--;
 			} else if (input == 6) {
 				restaurant.printOrder();
-				day--;
 			} else if (input == 7) {
 				restaurant.printIncome();
-				day--;
 			} else if (input == 8) {
 				restaurant.printItemDetail();
-				day--;
 			} else if (input == 9) {
 				restaurant.printChefDetail();
-				day--;
 			} else {
 				System.out.println("다시 입력해주십시오.");
-				day--;
 			}
 		}
 	}
@@ -286,7 +277,7 @@ public class Main {
 					String inputTemp = scan.next();
 					if (inputTemp.equals("0")) {
 						printWokingInputList();
-						selectWorkingOption(scan, day, turn, restaurant);
+						selectWorkingOption(scan, restaurant);
 					}
 				}
 
