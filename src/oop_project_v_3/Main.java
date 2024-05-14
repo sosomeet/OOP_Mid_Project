@@ -77,14 +77,15 @@ public class Main {
 
 			System.out.println("손님 이름을 입력하십시오.");
 			String name = scan.nextLine();
-			System.out.println("손님 유형을 입력하십시오.");
-			int input = scan.nextInt();
-			while (!(input <= 2 && input >= 0)) {
+			System.out.println("손님 유형을 입력하십시오. (0:평범, 1:소식가 2:대식가)");
+			String input = scan.next();
+			while (!(input.equals("0") || input.equals("1") || input.equals("2"))) {
 				System.out.println("다시 입력하십시오.");
-				input = scan.nextInt();
+				input = scan.next();
 			}
 
-			guest = new Guest(name, input);
+			int category = Integer.parseInt(input);
+			guest = new Guest(name, category);
 			restaurant.addGuest(guest);
 
 			System.out.print(guest.name + " : ");
@@ -181,55 +182,41 @@ public class Main {
 		return;
 	}
 
-	public static void main(String[] args) {
+	public static void printStartDayInputList() {
+		System.out.println("\n무엇을 하시겠습니까?");
+		System.out.println("0. 프로그램 종료");
+		System.out.println("1. 영업 시작");
+		System.out.println("2. 재고 확인");
+		System.out.println("3. 메뉴 확인");
+		System.out.println("4. 셰프 확인");
+		System.out.println("5. 수입 확인");
+		System.out.println("6. 자세한 재고 확인");
+		System.out.println("7. 자세한 셰프 확인");
+	}
 
-		Scanner scan = new Scanner(System.in);
+	public static void printWokingInputList() {
+		System.out.println("\n무엇을 하시겠습니까?");
+		System.out.println("0. 프로그램 종료");
+		System.out.println("1. 영업 진행");
+		System.out.println("2. 재고 확인");
+		System.out.println("3. 메뉴 확인");
+		System.out.println("4. 셰프 확인");
+		System.out.println("5. 손님 확인");
+		System.out.println("6. 주문 확인");
+		System.out.println("7. 수입 확인");
+		System.out.println("8. 자세한 재고 확인");
+		System.out.println("9. 자세한 셰프 확인");
+	}
 
-		int day = 0;
-		int turn = 0;
-
-		Restaurant restaurant = new Restaurant();
-		initRestaurant(restaurant);
-
-		while (day != 30) {
-			System.out.println("하루를 시작합니다.\n");
-			System.out.println("무엇을 하시겠습니까?");
-			System.out.println("1. 영업 시작");
-			System.out.println("2. 재고 확인");
-			System.out.println("3. 메뉴 확인");
-			System.out.println("4. 셰프 확인");
-			System.out.println("5. 손님 확인");
-			System.out.println("6. 주문 확인");
-			System.out.println("7. 수입 확인");
-			System.out.println("8. 자세한 재고 확인");
-			System.out.println("9. 자세한 셰프 확인");
-
+	public static void selectWorkingOption(Scanner scan, int day, int turn, Restaurant restaurant) {
+		while (true) {
 			int input = scan.nextInt();
-
-			if (input == 1) {
-				while (turn != 13) {
-					int rand = (int) (Math.random() * 2);
-					System.out.println("\n" + (day + 1) + "일 " + (turn + 8) + "시");
-					if ((int) (Math.random() * 2) == 1) {
-						addGuest(restaurant);
-					} else {
-						System.out.println("손님이 오지 않았습니다.");
-					}
-					assignOrder(turn, restaurant);
-					checkOrder(turn, restaurant);
-					checkGuest(turn, restaurant);
-
-					sleep(1);
-					turn++;
-				}
-
-				restaurant.initChef();
-				restaurant.initGuest();
-				restaurant.initOrder();
-				System.out.println("하루를 종료합니다.");
-				restaurant.printIncome();
-				System.out.println();
-
+			if (input == 0) {
+				System.out.println("프로그램을 종료합니다.");
+				scan.close();
+				return;
+			} else if (input == 1) {
+				return;
 			} else if (input == 2) {
 				restaurant.printItem();
 				day--;
@@ -251,7 +238,81 @@ public class Main {
 			} else if (input == 8) {
 				restaurant.printItemDetail();
 				day--;
-			} else if (input == 8) {
+			} else if (input == 9) {
+				restaurant.printChefDetail();
+				day--;
+			} else {
+				System.out.println("다시 입력해주십시오.");
+				day--;
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+
+		int day = 0;
+		int turn = 0;
+
+		Restaurant restaurant = new Restaurant();
+		initRestaurant(restaurant);
+
+		while (day != 30) {
+			System.out.println("하루를 시작합니다.");
+			printStartDayInputList();
+
+			int input = scan.nextInt();
+			if (input == 0) {
+				System.out.println("프로그램을 종료합니다.");
+				scan.close();
+				return;
+			} else if (input == 1) {
+				while (turn != 13) {
+					int rand = (int) (Math.random() * 2);
+					System.out.println("\n" + (day + 1) + "일 " + (turn + 8) + "시");
+					if ((int) (Math.random() * 2) == 1) {
+						addGuest(restaurant);
+					} else {
+						System.out.println("손님이 오지 않았습니다.");
+					}
+					assignOrder(turn, restaurant);
+					checkOrder(turn, restaurant);
+					checkGuest(turn, restaurant);
+
+					turn++;
+					sleep(1);
+
+					System.out.println("@일시정지하고 싶다면 0을 입력하십시오.@");
+					String inputTemp = scan.next();
+					if (inputTemp.equals("0")) {
+						printWokingInputList();
+						selectWorkingOption(scan, day, turn, restaurant);
+					}
+				}
+
+				restaurant.initChef();
+				restaurant.initGuest();
+				restaurant.initOrder();
+				System.out.println("하루를 종료합니다.");
+				restaurant.printIncome();
+				System.out.println();
+
+			} else if (input == 2) {
+				restaurant.printItem();
+				day--;
+			} else if (input == 3) {
+				restaurant.printMenu();
+				day--;
+			} else if (input == 4) {
+				restaurant.printChef();
+				day--;
+			} else if (input == 5) {
+				restaurant.printIncome();
+				day--;
+			} else if (input == 6) {
+				restaurant.printItemDetail();
+				day--;
+			} else if (input == 7) {
 				restaurant.printChefDetail();
 				day--;
 			} else {
@@ -263,6 +324,7 @@ public class Main {
 			turn = 0;
 		}
 
+		scan.close();
 		return;
 	}
 

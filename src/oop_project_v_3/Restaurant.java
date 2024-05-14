@@ -312,7 +312,7 @@ public class Restaurant {
 		System.out.println("주문 목록");
 		for (int i = 0; i < orderList.size(); i++) {
 			System.out.print("[" + menuList.get(orderList.get(i).selectMenuIndex).name + "] ");
-			System.out.println(orderList.get(i).count + "개가" + orderList.get(i).endTurn + "에 완료");
+			System.out.println(orderList.get(i).count + "개가 " + orderList.get(i).endTurn + "턴에 완료");
 		}
 		return;
 	}
