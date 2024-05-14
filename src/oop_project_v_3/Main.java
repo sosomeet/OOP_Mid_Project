@@ -280,6 +280,7 @@ public class Main {
 						printWokingInputList();
 						selectWorkingOption(scan, restaurant);
 					}
+					
 				}
 
 				restaurant.initChef();
@@ -288,32 +289,25 @@ public class Main {
 				System.out.println("하루를 종료합니다.");
 				restaurant.printIncome();
 				System.out.println();
+				
+				day++;
+				turn = 0;
 
 			} else if (input == 2) {
 				restaurant.printItem();
-				day--;
 			} else if (input == 3) {
 				restaurant.printMenu();
-				day--;
 			} else if (input == 4) {
 				restaurant.printChef();
-				day--;
 			} else if (input == 5) {
 				restaurant.printIncome();
-				day--;
 			} else if (input == 6) {
 				restaurant.printItemDetail();
-				day--;
 			} else if (input == 7) {
 				restaurant.printChefDetail();
-				day--;
 			} else {
 				System.out.println("다시 입력해주십시오.");
-				day--;
 			}
-
-			day++;
-			turn = 0;
 		}
 
 		scan.close();
