@@ -337,6 +337,10 @@ public class Main {
 			}
 		}
 
+		System.out.println("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
+		System.out.println("¡á You Loved Taco ¡á");
+		System.out.println("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á\n");
+		
 		scan.close();
 		return;
 	}
