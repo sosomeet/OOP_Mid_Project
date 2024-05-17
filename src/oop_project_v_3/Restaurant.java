@@ -23,7 +23,7 @@ public class Restaurant {
 		itemNameArray = new String[5][];
 		itemStockArray = new int[5][];
 		itemPriceArray = new int[5][];
-
+		
 		String[] mainItemList = { "브리또", "보울", "크리스피콘", "또띠아" };
 		String[] mainToppingList = { "소고기", "돼지고기", "닭고기", "바베큐" };
 		String[] subToppingList = { "콩", "백미", "황미", "양상추", "양배추" };

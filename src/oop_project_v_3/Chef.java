@@ -9,14 +9,14 @@ public class Chef {
 	boolean isCooking;
 
 	Chef(String name, int menuLen) {
-		contructorChef(name, (int) (Math.random() * 4), menuLen);
+		constructorChef(name, (int) (Math.random() * 4), menuLen);
 	}
 
 	Chef(String name, int rank, int menuLen) {
-		contructorChef(name, rank, menuLen);
+		constructorChef(name, rank, menuLen);
 	}
 
-	private void contructorChef(String name, int rank, int menuLen) {
+	private void constructorChef(String name, int rank, int menuLen) {
 		this.name = name;
 		this.rank = rank;
 		this.cookableArray = new boolean[menuLen];
