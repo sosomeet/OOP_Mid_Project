@@ -37,6 +37,53 @@ public class Main {
 		restaurant.addChef(chef);
 	}
 
+	// 메뉴 추가
+	public static void addMenu(Restaurant restaurant) {
+		Scanner scan = new Scanner(System.in);
+
+		System.out.println("메뉴 이름을 입력하십시오.");
+		String menuName = scan.nextLine();
+
+		System.out.println("메인 재료를 선택하시겠습니까? (0 : 네, 1 : 아니오)");
+		String selectOption = "0";
+
+		boolean isOk = false;
+		while (!isOk) {
+			selectOption = scan.next();
+			if (selectOption.equals("0") || selectOption.equals("1")) {
+				isOk = true;
+			} else {
+				System.out.println("다시 입력해 주십시오.");
+			}
+		}
+
+		System.out.println("어떤 메인 재료를 선택하시겠습니까?");
+		System.out.println("브리또, 보울, 크리스피콘, 또띠아");
+
+		String selectItem = "";
+		isOk = false;
+		while (!isOk) {
+			selectItem = scan.next();
+			if (selectItem.equals("브리또") || selectItem.equals("보울") || selectItem.equals("크리스피콘")
+					|| selectItem.equals("또띠아")) {
+				isOk = true;
+			} else {
+				System.out.println("다시 입력해 주십시오.");
+			}
+		}
+
+		Menu newMenu = new Menu("", restaurant);
+		if (selectOption.equals("1")) {
+			newMenu = new Menu(menuName, restaurant);
+		} else if (selectOption.equals("0")) {
+			newMenu = new Menu(menuName, selectItem, restaurant);
+		}
+		restaurant.addMenu(newMenu);
+		System.out.println(menuName + "메뉴가 추가되었습니다.");
+
+		return;
+	}
+
 	// 손님 추가
 	public static void addGuest(Restaurant restaurant) {
 		Guest guest;
@@ -128,10 +175,10 @@ public class Main {
 		// 아직 처리하지 못한 주문의 길이만큼 반복
 		for (int i = 0; i < restaurant.getOrderLen(); i++) {
 			isCooked = false;
-			
+
 			// 손님이 선택한 메뉴의 인덱스
 			int selectMenuIndex = restaurant.getOrderList().get(i).selectMenuIndex;
-			
+
 			// 셰프의 수 만큼 반복
 			for (int j = 0; j < restaurant.getChefLen(); j++) {
 				// !(주문이 이미 요리 시작했는지) && 일할 수 있는 셰프가 있는지
@@ -146,7 +193,7 @@ public class Main {
 					break;
 				}
 			}
-			
+
 			// 요리가 시작되지 않고, 요리 상태가 요리 중이지도 않으면
 			if (!isCooked && !restaurant.getOrderList().get(i).isCooked) {
 				System.out.println("요리할 수 있는 사람이 없습니다.");
@@ -161,7 +208,7 @@ public class Main {
 		for (int i = 0; i < restaurant.getOrderLen(); i++) {
 			// 만약 주문이 완성되는 턴이 지금 턴과 같다면
 			if (restaurant.getOrderList().get(i).endTurn == turn) {
-				
+
 				// 가격 계산
 				int pay = restaurant.getOrderList().get(i).count;
 				pay *= restaurant.getMenuList().get(restaurant.getOrderList().get(i).selectMenuIndex).price;
@@ -174,7 +221,7 @@ public class Main {
 				System.out.println(
 						"주문하신 [" + restaurant.getMenuList().get(restaurant.getOrderList().get(i).selectMenuIndex).name
 								+ "] 나왔습니다.");
-				
+
 				// 주문 완료 시 리스트에서 제외
 				restaurant.leaveOrder(i);
 				// 손님이 떠나는 턴
@@ -205,7 +252,9 @@ public class Main {
 		System.out.println("4. 셰프 확인");
 		System.out.println("5. 수입 확인");
 		System.out.println("6. 자세한 재고 확인");
-		System.out.println("7. 자세한 셰프 확인");
+		System.out.println("7. 자세한 메뉴 확인");
+		System.out.println("8. 자세한 셰프 확인");
+		System.out.println("9. 메뉴 추가");
 	}
 
 	public static void printWokingOption() {
@@ -271,7 +320,7 @@ public class Main {
 		System.out.println("■■■■■■■■■■■■■■■");
 		System.out.println("■ I Love Taco ■");
 		System.out.println("■■■■■■■■■■■■■■■\n");
-		
+
 		while (day != 30) {
 			System.out.println("하루를 시작합니다.");
 			printStartDayInputList();
@@ -307,7 +356,7 @@ public class Main {
 						printWokingOption();
 						selectWorkingOption(scan, restaurant);
 					}
-					
+
 				}
 
 				restaurant.initChef();
@@ -316,7 +365,7 @@ public class Main {
 				System.out.println("\n하루를 종료합니다.");
 				restaurant.printIncome();
 				System.out.println();
-				
+
 				day++;
 				turn = 0;
 
@@ -331,7 +380,11 @@ public class Main {
 			} else if (input == 6) {
 				restaurant.printItemDetail();
 			} else if (input == 7) {
+				restaurant.printMenuDetail();
+			} else if (input == 8) {
 				restaurant.printChefDetail();
+			} else if (input == 9) {
+				addMenu(restaurant);
 			} else {
 				System.out.println("다시 입력해주십시오.");
 			}
@@ -340,7 +393,7 @@ public class Main {
 		System.out.println("■■■■■■■■■■■■■■■■■■");
 		System.out.println("■ You Loved Taco ■");
 		System.out.println("■■■■■■■■■■■■■■■■■■\n");
-		
+
 		scan.close();
 		return;
 	}

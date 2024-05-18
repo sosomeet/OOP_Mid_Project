@@ -279,6 +279,22 @@ public class Restaurant {
 		return;
 	}
 
+	public void printMenuDetail() {
+		System.out.println("메뉴판");
+		for (int i = 0; i < menuList.size(); i++) {
+			System.out.println("[" + menuList.get(i).name + "] : " + menuList.get(i).price + "원");
+			System.out.println("[사용재료]");
+			for(int j = 0; j < itemNameArray.length; j++) {
+				for(int k = 0; k < itemNameArray[j].length; k++) {
+					System.out.print(itemNameArray[j][k] + ":" + menuList.get(i).useItems[j][k] +"개 ");
+				}
+				System.out.println();
+			}
+			System.out.println();
+		}
+		return;
+	}
+	
 	public void printChef() {
 		System.out.println("직원 목록");
 		for (int i = 0; i < chefList.size(); i++) {

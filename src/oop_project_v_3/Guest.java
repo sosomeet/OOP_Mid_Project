@@ -37,9 +37,4 @@ public class Guest {
 		leaveTurn = 100;
 		return;
 	}
-
-	private void setLeaveTurn(int leaveTurn) {
-		this.leaveTurn = leaveTurn;
-		return;
-	}
 }
