@@ -76,11 +76,13 @@ public class Main {
 		}
 
 		Menu newMenu = new Menu("", restaurant);
+		
 		if (selectOption.equals("1")) {
 			newMenu = new Menu(menuName, restaurant);
 		} else if (selectOption.equals("0")) {
 			newMenu = new Menu(menuName, selectItem, restaurant);
 		}
+		
 		restaurant.addMenu(newMenu);
 		System.out.println(menuName + "메뉴가 추가되었습니다.");
 
@@ -151,11 +153,13 @@ public class Main {
 		}
 
 		Chef newChef = new Chef("", restaurant.getMenuLen());
+		
 		if (selectOption.equals("1")) {
 			newChef = new Chef(chefName, restaurant.getMenuLen());
 		} else if (selectOption.equals("0")) {
 			newChef = new Chef(chefName, selectRankInt, restaurant.getMenuLen());
 		}
+		
 		restaurant.addChef(newChef);
 		System.out.println(chefName + "셰프를 고용하였습니다.");
 
@@ -237,7 +241,7 @@ public class Main {
 
 		else if (rand == 3) {
 			for (int i = 0; i < 2; i++) {
-				guest = new Guest();
+				guest = new Guest("커플");
 				restaurant.addGuest(guest);
 
 				System.out.print(guest.name + " : ");
