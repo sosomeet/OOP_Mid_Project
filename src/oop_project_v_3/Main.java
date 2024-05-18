@@ -86,6 +86,10 @@ public class Main {
 		restaurant.addMenu(newMenu);
 		System.out.println(menuName + "메뉴가 추가되었습니다.");
 
+		for(int i = 0; i <restaurant.getChefLen(); i++) {
+			restaurant.getChefList().get(i).initCookableArray(restaurant.getMenuLen());
+		}
+		
 		return;
 	}
 

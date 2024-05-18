@@ -4,7 +4,7 @@ public class Chef {
 	String name;
 	int rank;
 	boolean[] cookableArray;
-	
+
 	int cookOrderIndex;
 	boolean isCooking;
 
@@ -39,6 +39,13 @@ public class Chef {
 				break;
 			}
 		}
+		
+		initCookableArray(menuLen);
+
+	}
+
+	public void initCookableArray(int menuLen) {
+		this.cookableArray = new boolean[menuLen];
 		
 		// 오너셰프 : 모든 요리 가능
 		if (rank == 0) {
