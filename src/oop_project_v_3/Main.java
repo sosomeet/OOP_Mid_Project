@@ -106,6 +106,10 @@ public class Main {
 				restaurant.deleteMenu(i);
 			}
 		}
+		
+		for(int i = 0; i <restaurant.getChefLen(); i++) {
+			restaurant.getChefList().get(i).initCookableArray(restaurant.getMenuLen());
+		}
 	}
 
 	// ¼ÎÇÁ Ãß°¡
