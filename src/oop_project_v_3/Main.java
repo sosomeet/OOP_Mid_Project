@@ -84,6 +84,21 @@ public class Main {
 		return;
 	}
 
+	// 메뉴 삭제
+	public static void deleteMenu(Restaurant restaurant) {
+		Scanner scan = new Scanner(System.in);
+
+		System.out.println("삭제할 메뉴 이름을 입력하십시오.");
+		String menuName = scan.nextLine();
+
+		for (int i = 0; i < restaurant.getMenuLen(); i++) {
+			if (restaurant.getMenuList().get(i).name.equals(menuName)) {
+				System.out.println(restaurant.getMenuList().get(i).name + " 메뉴를 삭제합니다.");
+				restaurant.deleteMenu(i);
+			}
+		}
+	}
+
 	// 손님 추가
 	public static void addGuest(Restaurant restaurant) {
 		Guest guest;
@@ -255,6 +270,7 @@ public class Main {
 		System.out.println("7. 자세한 메뉴 확인");
 		System.out.println("8. 자세한 셰프 확인");
 		System.out.println("9. 메뉴 추가");
+		System.out.println("10. 메뉴 삭제");
 	}
 
 	public static void printWokingOption() {
@@ -385,6 +401,8 @@ public class Main {
 				restaurant.printChefDetail();
 			} else if (input == 9) {
 				addMenu(restaurant);
+			} else if (input == 10) {
+				deleteMenu(restaurant);
 			} else {
 				System.out.println("다시 입력해주십시오.");
 			}

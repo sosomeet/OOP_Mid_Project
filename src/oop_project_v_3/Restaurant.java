@@ -150,6 +150,11 @@ public class Restaurant {
 		return;
 	}
 
+	public void deleteMenu(int index) {
+		menuList.remove(index);
+		return;
+	}
+	
 	public void leaveGuest(int index) {
 		guestList.remove(index);
 		return;
