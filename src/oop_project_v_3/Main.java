@@ -181,11 +181,18 @@ public class Main {
 		System.out.println("삭제할 셰프 이름을 입력하십시오.");
 		String chefName = scan.nextLine();
 
+		boolean isDelete = false;
+		
 		for (int i = 0; i < restaurant.getChefLen(); i++) {
 			if (restaurant.getChefList().get(i).name.equals(chefName)) {
 				System.out.println(restaurant.getChefList().get(i).name + " 셰프를 해고합니다.");
 				restaurant.deleteChef(i);
+				isDelete = true;
 			}
+		}
+		
+		if(!isDelete) {
+			System.out.println("셰프가 해고되지 않았습니다.");
 		}
 	}
 
@@ -430,11 +437,13 @@ public class Main {
 		System.out.println("■■■■■■■■■■■■■■■\n");
 
 		while (day != 30) {
-			System.out.println("하루를 시작합니다.");
+			System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■");
+			System.out.println("■ Taco Restaurant Open ■");
+			System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■");
 			printStartDayInputList();
 
-			int input = scan.nextInt();
-			if (input == 0) {
+			String input = scan.nextLine();
+			if (input.equals("0")) {
 				System.out.println("프로그램을 종료합니다.\n");
 				sleep(1);
 				System.out.println("■■■■■■■■■■■■■■■■■■");
@@ -443,7 +452,7 @@ public class Main {
 				sleep(3);
 				scan.close();
 				return;
-			} else if (input == 1) {
+			} else if (input.equals("1")) {
 				while (turn != 13) {
 					System.out.println("\n" + (day + 1) + "일 " + (turn + 8) + "시");
 					if ((int) (Math.random() * 2) == 1) {
@@ -470,35 +479,48 @@ public class Main {
 				restaurant.initChef();
 				restaurant.initGuest();
 				restaurant.initOrder();
-				System.out.println("\n하루를 종료합니다.");
+				System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■");
+				System.out.println("■ Taco Restaurant Close ■");
+				System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■\n");
 				restaurant.printIncome();
 				System.out.println();
 
 				day++;
 				turn = 0;
 
-			} else if (input == 2) {
+			} else if (input.equals("2")) {
 				restaurant.printItem();
-			} else if (input == 3) {
+				sleep(1);
+			} else if (input.equals("3")) {
 				restaurant.printMenu();
-			} else if (input == 4) {
+				sleep(1);
+			} else if (input.equals("4")) {
 				restaurant.printChef();
-			} else if (input == 5) {
+				sleep(1);
+			} else if (input.equals("5")) {
 				restaurant.printIncome();
-			} else if (input == 6) {
+				sleep(1);
+			} else if (input.equals("6")) {
 				restaurant.printItemDetail();
-			} else if (input == 7) {
+				sleep(1);
+			} else if (input.equals("7")) {
 				restaurant.printMenuDetail();
-			} else if (input == 8) {
+				sleep(1);
+			} else if (input.equals("8")) {
 				restaurant.printChefDetail();
-			} else if (input == 9) {
+				sleep(1);
+			} else if (input.equals("9")) {
 				addMenu(restaurant);
-			} else if (input == 10) {
+				sleep(1);
+			} else if (input.equals("10")) {
 				deleteMenu(restaurant);
-			} else if (input == 11) {
+				sleep(1);
+			} else if (input.equals("11")) {
 				addChef(restaurant);
-			} else if (input == 12) {
+				sleep(1);
+			} else if (input.equals("12")) {
 				deleteChef(restaurant);
+				sleep(1);
 			} else {
 				System.out.println("다시 입력해주십시오.");
 			}

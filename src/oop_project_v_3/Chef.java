@@ -7,6 +7,10 @@ public class Chef {
 
 	int cookOrderIndex;
 	boolean isCooking;
+	
+	Chef() {
+		
+	}
 
 	Chef(String name, int menuLen) {
 		constructorChef(name, (int) (Math.random() * 4), menuLen);
@@ -41,6 +45,8 @@ public class Chef {
 		}
 		
 		initCookableArray(menuLen);
+		
+		return;
 
 	}
 
@@ -102,5 +108,7 @@ public class Chef {
 			int temp = (int) (Math.random() * menuLen);
 			this.cookableArray[temp] = true;
 		}
+		
+		return;
 	}
 }
