@@ -57,18 +57,21 @@ public class Main {
 			}
 		}
 
-		System.out.println("어떤 메인 재료를 선택하시겠습니까?");
-		System.out.println("브리또, 보울, 크리스피콘, 또띠아");
-
 		String selectItem = "";
-		isOk = false;
-		while (!isOk) {
-			selectItem = scan.next();
-			if (selectItem.equals("브리또") || selectItem.equals("보울") || selectItem.equals("크리스피콘")
-					|| selectItem.equals("또띠아")) {
-				isOk = true;
-			} else {
-				System.out.println("다시 입력해 주십시오.");
+
+		if (selectOption.equals("0")) {
+			System.out.println("어떤 메인 재료를 선택하시겠습니까?");
+			System.out.println("브리또, 보울, 크리스피콘, 또띠아");
+
+			isOk = false;
+			while (!isOk) {
+				selectItem = scan.next();
+				if (selectItem.equals("브리또") || selectItem.equals("보울") || selectItem.equals("크리스피콘")
+						|| selectItem.equals("또띠아")) {
+					isOk = true;
+				} else {
+					System.out.println("다시 입력해 주십시오.");
+				}
 			}
 		}
 
@@ -94,6 +97,81 @@ public class Main {
 		for (int i = 0; i < restaurant.getMenuLen(); i++) {
 			if (restaurant.getMenuList().get(i).name.equals(menuName)) {
 				System.out.println(restaurant.getMenuList().get(i).name + " 메뉴를 삭제합니다.");
+				restaurant.deleteMenu(i);
+			}
+		}
+	}
+
+	// 셰프 추가
+	public static void addChef(Restaurant restaurant) {
+		Scanner scan = new Scanner(System.in);
+
+		System.out.println("셰프 이름을 입력하십시오.");
+		String chefName = scan.nextLine();
+
+		System.out.println("메인 유형을 선택하시겠습니까? (0 : 네, 1 : 아니오)");
+		String selectOption = "0";
+
+		boolean isOk = false;
+		while (!isOk) {
+			selectOption = scan.next();
+			if (selectOption.equals("0") || selectOption.equals("1")) {
+				isOk = true;
+			} else {
+				System.out.println("다시 입력해 주십시오.");
+			}
+		}
+
+		String selectRank = "";
+		int selectRankInt = 0;
+
+		if (selectOption.equals("0")) {
+			System.out.println("어떤 셰프를 선택하시겠습니까?");
+			System.out.println("오너셰프: 1등급, 매니저 : 2등급, 견습생 : 3등급, 아르바이트 : 4등급");
+
+			isOk = false;
+			while (!isOk) {
+				selectRank = scan.next();
+				if (selectRank.equals("오너셰프") || selectRank.equals("매니저") || selectRank.equals("견습생")
+						|| selectRank.equals("아르바이트")) {
+					isOk = true;
+					if (selectRank.equals("오너셰프")) {
+						selectRankInt = 0;
+					} else if (selectRank.equals("매니저")) {
+						selectRankInt = 1;
+					} else if (selectRank.equals("견습생")) {
+						selectRankInt = 2;
+					} else if (selectRank.equals("아르바이트")) {
+						selectRankInt = 3;
+					}
+				} else {
+					System.out.println("다시 입력해 주십시오.");
+				}
+			}
+		}
+
+		Chef newChef = new Chef("", restaurant.getMenuLen());
+		if (selectOption.equals("1")) {
+			newChef = new Chef(chefName, restaurant.getMenuLen());
+		} else if (selectOption.equals("0")) {
+			newChef = new Chef(chefName, selectRankInt, restaurant.getMenuLen());
+		}
+		restaurant.addChef(newChef);
+		System.out.println(chefName + "셰프를 고용하였습니다.");
+
+		return;
+	}
+
+	// 셰프 삭제
+	public static void deleteChef(Restaurant restaurant) {
+		Scanner scan = new Scanner(System.in);
+
+		System.out.println("삭제할 메뉴 이름을 입력하십시오.");
+		String chefName = scan.nextLine();
+
+		for (int i = 0; i < restaurant.getMenuLen(); i++) {
+			if (restaurant.getMenuList().get(i).name.equals(chefName)) {
+				System.out.println(restaurant.getMenuList().get(i).name + " 셰프를 해고합니다.");
 				restaurant.deleteMenu(i);
 			}
 		}
@@ -271,6 +349,8 @@ public class Main {
 		System.out.println("8. 자세한 셰프 확인");
 		System.out.println("9. 메뉴 추가");
 		System.out.println("10. 메뉴 삭제");
+		System.out.println("11. 셰프 추가");
+		System.out.println("12. 셰프 삭제");
 	}
 
 	public static void printWokingOption() {
@@ -403,6 +483,10 @@ public class Main {
 				addMenu(restaurant);
 			} else if (input == 10) {
 				deleteMenu(restaurant);
+			} else if (input == 11) {
+				addChef(restaurant);
+			} else if (input == 12) {
+				deleteChef(restaurant);
 			} else {
 				System.out.println("다시 입력해주십시오.");
 			}
