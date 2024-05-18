@@ -119,7 +119,7 @@ public class Main {
 		System.out.println("셰프 이름을 입력하십시오.");
 		String chefName = scan.nextLine();
 
-		System.out.println("메인 유형을 선택하시겠습니까? (0 : 네, 1 : 아니오)");
+		System.out.println("셰프 등급을 선택하시겠습니까? (0 : 네, 1 : 아니오)");
 		String selectOption = "0";
 
 		boolean isOk = false;
