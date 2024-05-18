@@ -178,13 +178,13 @@ public class Main {
 	public static void deleteChef(Restaurant restaurant) {
 		Scanner scan = new Scanner(System.in);
 
-		System.out.println("삭제할 메뉴 이름을 입력하십시오.");
+		System.out.println("삭제할 셰프 이름을 입력하십시오.");
 		String chefName = scan.nextLine();
 
-		for (int i = 0; i < restaurant.getMenuLen(); i++) {
-			if (restaurant.getMenuList().get(i).name.equals(chefName)) {
-				System.out.println(restaurant.getMenuList().get(i).name + " 셰프를 해고합니다.");
-				restaurant.deleteMenu(i);
+		for (int i = 0; i < restaurant.getChefLen(); i++) {
+			if (restaurant.getChefList().get(i).name.equals(chefName)) {
+				System.out.println(restaurant.getChefList().get(i).name + " 셰프를 해고합니다.");
+				restaurant.deleteChef(i);
 			}
 		}
 	}

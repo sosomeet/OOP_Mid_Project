@@ -155,6 +155,11 @@ public class Restaurant {
 		return;
 	}
 	
+	public void deleteChef(int index) {
+		chefList.remove(index);
+		return;
+	}
+	
 	public void leaveGuest(int index) {
 		guestList.remove(index);
 		return;
